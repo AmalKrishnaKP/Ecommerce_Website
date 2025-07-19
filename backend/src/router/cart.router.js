@@ -1,10 +1,11 @@
 import express from "express"
-import { addCart, deleteCart, updateCart } from "../controller/cart.controller.js"
+import { addCart, deleteCart, procedcart, showCart, updateCart } from "../controller/cart.controller.js"
 
 const cart = express.Router()
-
+cart.get("/showCart",showCart)
 cart.put("/addCart",addCart)
 cart.patch("/updatecart",updateCart)
 cart.delete("/deletecart",deleteCart)
+cart.get('/proceedCart',procedcart)
 
 export default cart

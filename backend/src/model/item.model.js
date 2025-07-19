@@ -17,6 +17,10 @@ const itemSchema = new mongoose.Schema({
         type:String,
         require:true,
     },
+    dress_type:{
+        type:String,
+        require:true,
+    },
     price:{
         type:Number,
         require:true,

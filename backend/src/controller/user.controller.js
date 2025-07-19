@@ -42,7 +42,7 @@ export const login=async(req,res)=>{
         if (!email ||!password)
             return res.status(400).json({message:"need all credential"})
 
-        const user=await User.findOne({email})
+        const user=await User.findOne({email}).select("-password")
         console.log(user);
         
         if (!user)
@@ -58,7 +58,7 @@ export const login=async(req,res)=>{
         }
         TokenGeneration(user._id,res)
         console.log(res.cookie);
-        return res.status(200).json({login:true})   
+        return res.status(200).json({user})   
 
     } catch (error) {
         res.status(500).json({messge:"server side error"})
@@ -100,4 +100,4 @@ export const logout=async(req,res)=>{
     } catch (error) {
         res.status(500).json({message:"server side error"})
     }
-}
+}   

@@ -12,7 +12,7 @@ export const signup=async(req,res)=>{
         if (!fullName || !password || !email){
             return res.status(400).json({message:"need all crediential"})
         }
-        const admin=await Admin.findOne({fullName})
+        const admin=await Admin.findOne({fullName}).select("-password")
         if (admin)
            return res.status(400).json({message:"user already exist"})
 
@@ -60,7 +60,7 @@ export const login=async(req,res)=>{
         }
         TokenGeneration(admin._id,res)
         console.log(res.cookie);
-        return res.status(200).json({login:true})   
+        return res.status(200).json({admin})   
 
     } catch (error) {
         res.status(500).json({messge:"server side error"})

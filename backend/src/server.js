@@ -18,5 +18,7 @@ app.listen(5000,()=>{
     console.log("server listening");
     
     connectDB()
+    // console.log("Hai".toLowerCase());
     
+       
 })
