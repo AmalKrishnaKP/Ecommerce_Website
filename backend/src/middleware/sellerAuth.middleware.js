@@ -19,7 +19,7 @@ export const sellerAuthMidWare=async(req,res,next)=>{
             if (!seller)
                 return res.status(400).json({message:"no seller exist"}
             )
-            req.seller=seller
+            req.user=seller
             console.log("authendicated");
             
             next()

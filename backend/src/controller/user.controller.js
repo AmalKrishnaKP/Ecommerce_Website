@@ -101,3 +101,12 @@ export const logout=async(req,res)=>{
         res.status(500).json({message:"server side error"})
     }
 }   
+export const auth=async(req,res)=>{
+    try {
+        res.status(200).json(res.user)
+    } catch (error) {
+        res.status(500).json({message:"server side error"})
+        console.log(error.message);
+        
+    }
+}

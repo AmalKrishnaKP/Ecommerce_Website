@@ -60,7 +60,7 @@ export const login=async(req,res)=>{
         }
         TokenGeneration(admin._id,res)
         console.log(res.cookie);
-        return res.status(200).json({admin})   
+        return res.status(200).json(admin)   
 
     } catch (error) {
         res.status(500).json({messge:"server side error"})
@@ -69,6 +69,25 @@ export const login=async(req,res)=>{
         
     }
 }
+export const logout=async(req,res)=>{
+    try {
+        res.cookie("jwt_token","",{maxAge:0})
+        res.status(200).json({message:"logout successfully"})
+    } catch (error) {
+        res.status(500).json({message:"server side error"})
+    }
+}
+
+export const auth=async(req,res)=>{
+    try {
+        res.status(200).json(res.user)
+    } catch (error) {
+        res.status(500).json({message:"server side error"})
+        console.log(error.message);
+        
+    }
+}
+
 // export const update=async(req,res)=>{
 //     try {
 //         const update=await Admin.findOneAndUpdate({_id:req.user._id},{
@@ -93,14 +112,6 @@ export const deleteMe=async(req,res)=>{
         console.log(error);
         
         
-    }
-}
-export const logout=async(req,res)=>{
-    try {
-        res.cookie("jwt_token","",{maxAge:0})
-        res.status(200).json({message:"logout successfully"})
-    } catch (error) {
-        res.status(500).json({message:"server side error"})
     }
 }
 export const allUsers=async(req,res)=>{

@@ -1,6 +1,6 @@
 import express from 'express'
 
-import { deleteUser, login, logout, signup, update } from '../controller/user.controller.js'
+import { deleteUser, login, logout, signup, update ,auth} from '../controller/user.controller.js'
 import { userAuthMidWare } from '../middleware/userAuth.middileware.js'
 import cart from './cart.router.js'
 import order from './order.router.js'
@@ -18,5 +18,5 @@ user.delete("/delete",userAuthMidWare,deleteUser)
 user.use("/cart",userAuthMidWare,cart)
 
 user.use("/order",userAuthMidWare,order)
-
+user.get("/auth",auth)
 export default user

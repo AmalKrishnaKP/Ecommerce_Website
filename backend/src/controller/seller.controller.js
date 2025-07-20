@@ -68,7 +68,7 @@ export const login=async(req,res)=>{
 }
 export const update=async(req,res)=>{
     try {
-        const update=await Seller.findOneAndUpdate({_id:req.seller._id},{
+        const update=await Seller.findOneAndUpdate({_id:req.user._id},{
             address:req.body.address
         },{new:true})
         res.status(200).json({update})
@@ -81,7 +81,7 @@ export const update=async(req,res)=>{
 }
 export const deleteSeller=async(req,res)=>{
     try {
-        const seller=req.seller
+        const seller=req.user
         await Seller.findOneAndDelete({_id:seller._id})
         res.cookie("jwt_token","",{maxAge:0})
         res.status(200).json({message:"deleted successfully"})
@@ -98,5 +98,14 @@ export const logout=async(req,res)=>{
         res.status(200).json({message:"logout successfully"})
     } catch (error) {
         res.status(500).json({message:"server side error"})
+    }
+}
+export const auth=async(req,res)=>{
+    try {
+        res.status(200).json(res.user)
+    } catch (error) {
+        res.status(500).json({message:"server side error"})
+        console.log(error.message);
+        
     }
 }

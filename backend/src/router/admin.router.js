@@ -1,5 +1,5 @@
 import express from "express"
-import { allUsers, deleteOneUser, login, logout, signup } from "../controller/admin.controller.js"
+import { allUsers, deleteOneUser, login, logout, signup ,auth} from "../controller/admin.controller.js"
 import { adminAuthMidWare } from "../middleware/adminAuth.middleware.js"
 
 const admin=express.Router()
@@ -10,5 +10,6 @@ admin.delete("/deleteUser/:id",adminAuthMidWare,deleteOneUser)
 admin.post("/login",login)
 admin.get("/logout",logout)
 admin.post("/signup",signup)
+admin.get("/auth",auth)
 
 export default admin
