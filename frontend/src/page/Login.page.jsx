@@ -1,10 +1,14 @@
 import { Eye, EyeOff, Lock, Mail, Phone, User } from 'lucide-react'
 import React from 'react'
 import { useState } from 'react'
+import toast from 'react-hot-toast'
 import { Link } from 'react-router-dom'
+import { authStore } from '../store/authStore.js'
 
 
 const LoginPage = () => {
+
+  const {login}=authStore()
   const [password,showpass]=useState(false)
   const [formdata,setdata]=useState({
     email:"",
@@ -13,8 +17,13 @@ const LoginPage = () => {
   })
   
   const handleSubmit=(e)=>{
-    e.preventDefault()
+    e.preventDefault()  
+    if (!formdata.email || !formdata.password || !formdata.role){
+        return toast.error("need all credentials")
+    }
+    console.log("passed");
     
+    login(formdata)  
   }
   return (
     <div className='flex flex-col items-center justify-center opacity-100 '>
@@ -24,11 +33,11 @@ const LoginPage = () => {
             </div>
             <form onSubmit={handleSubmit} >
                 <div className='flex flex-row justify-evenly'>
-                    <button type='button' className={`p-2 border-black border-2 rounded-xl min-w-[90px] ${formdata.role=="Buyer"?'bg-black text-white':''}`}
-                        onClick={()=>{setdata({... formdata,role:"Buyer"})}}   
+                    <button type='button' className={`p-2 border-black border-2 rounded-xl min-w-[90px] ${formdata.role=="user"?'bg-black text-white':''}`}
+                        onClick={()=>{setdata({... formdata,role:"user"})}}   
                     >Buyer</button> 
-                    <button type='button' className={`p-2 border-black border-2 rounded-xl min-w-[90px] ${formdata.role=="Seller"?'bg-black text-white':''}`}
-                        onClick={()=>{setdata({... formdata,role:"Seller"})}}
+                    <button type='button' className={`p-2 border-black border-2 rounded-xl min-w-[90px] ${formdata.role=="seller"?'bg-black text-white':''}`}
+                        onClick={()=>{setdata({... formdata,role:"seller"})}}
                     >Seller</button>
                     <button type='button' className={`p-2 border-black border-2 rounded-xl min-w-[90px] ${formdata.role=="Admin"?'bg-black text-white':''}`}
                         onClick={()=>{setdata({... formdata,role:"Admin"})}}
@@ -76,7 +85,7 @@ const LoginPage = () => {
                     </div>
                 </div>
                 <div className="flex flex-col  justify-center">
-                    <button type="submit" className='p-2 bg-black text-white rounded-2xl min-w-[200px]'>SignUp</button>
+                    <button type="submit" className='p-2 bg-black text-white rounded-2xl min-w-[200px]'>Login</button>
                     <h2>
 
                     Don't have an account? 

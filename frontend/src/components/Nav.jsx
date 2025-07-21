@@ -1,8 +1,15 @@
-import React from 'react'
-import {Search, Settings, ShoppingCart, UserRoundCog} from 'lucide-react'
+import React, { useEffect } from 'react'
+import {Search, LogOut, ShoppingCart, UserRoundCog} from 'lucide-react'
 import { Link } from 'react-router-dom'
+import { authStore } from '../store/authStore.js'
+import { useLocation } from 'react-router-dom'
 
 const Nav = () => {
+  
+  const {authUser,logout}=authStore()
+  const location=useLocation()
+  
+  
 
   return (
     <div className="bg-[#ffffff] flex flex-col  items-center max-w-[100vw]">
@@ -15,43 +22,86 @@ const Nav = () => {
         </div>
         <div className="flex-1 max-w-[30vw]  max-sm:max-w-[50vw]">
           <div className="bg-[#ffffff] flex flex-row justify-between items-center h-8  px-2 text-[20px] font-medium">
+            { authUser && authUser.role=="user" &&(
+              <div className={`
+                flex flex-row  items-center text-md font-bold hover:bg-[#f0ede7] hover:cursor-pointer rounded px-1 
+                ${location.pathname=="/shop" && 'border-b-2'}
+              `}>
               <Link to={"/shop"}>
-                <h1>shop</h1>
-              </Link>
-            <Link to={"/about"}>
-              <h1>about</h1>
+              <h1>shop</h1>
             </Link>
-            <Link to={"/support"}>
-              <h1>support</h1>
-            </Link>
+            </div>
+            )}
+            
+            { authUser &&(
+              <div className={`
+                flex flex-row  items-center text-md font-bold hover:bg-[#f0ede7] hover:cursor-pointer rounded px-1 
+                ${location.pathname=="/" && 'border-b-2'}
+              `}>
+                <Link to={"/"}>
+                  <h1>about</h1>
+                </Link>
+              </div>
+            )}
+            {
+              authUser &&(
+                <div className={`
+                flex flex-row  items-center text-md font-bold hover:bg-[#f0ede7] hover:cursor-pointer rounded px-1 
+                ${location.pathname=="/support" && 'border-b-2'}
+              `}>
+                  <Link to={"/support"}>
+                    <h1>support</h1>
+                  </Link>
+                </div>
+              )}
 
           </div>
         </div>
         <div className='flex flex-row items-center min-w-[30vw] justify-end-safe px-4 '>
           
-          <Link to={"/cart"}>
-            <div className="flex flex-row pr-3 items-center text-sm font-bold hover:bg-[#f0ede7] hover:cursor-pointer rounded-2xl p-2">
-              <ShoppingCart size={35} /> 
-              <h1 className='  max-md:hidden'>
-                Cart
-              </h1>
-            </div>
-          </Link>
+          { authUser && authUser.role=="user" &&
+            <Link to={"/cart"}>
+              <div className={`
+                flex flex-row pr-3 items-center text-sm font-bold hover:bg-[#f0ede7] hover:cursor-pointer rounded px-2
+                ${location.pathname=="/cart" && 'border-b-2'}
+              `}>
+                <ShoppingCart size={30} /> 
+                <h1 className='  max-md:hidden'>
+                  Cart
+                </h1>
+              </div>
+            </Link>
+          }
           
-          <Link to={"/profile"}>
-            <div className="flex flex-row pr-3 items-center text-sm font-bold hover:bg-[#f0ede7] hover:cursor-pointer rounded-2xl p-2">
-              <UserRoundCog size={35}/>
-              <h1 className="max-md:hidden">
-                Profile  
-              </h1>
-            </div>
-          </Link>
-          <Link to={"/settings"}>
-            <div className="hover:bg-[#f0ede7] hover:cursor-pointer ml-3 rounded-2xl">
-              <Settings size={35} color="#000000"  />
+          { authUser &&
+            <Link to={"/profile"}>
+              <div className={`
+                flex flex-row pr-3 items-center text-sm font-bold hover:bg-[#f0ede7] hover:cursor-pointer rounded px-2
+                ${location.pathname=="/profile" && 'border-b-2'}
+              `}>
+                <UserRoundCog size={30}/>
+                <h1 className="max-md:hidden">
+                  Profile  
+                </h1>
+              </div>
+            </Link>
+          }
+          {
+              authUser &&
+              <Link to={"/settings"}>
+                <div className={`
+                flex flex-row pr-3 items-center text-sm font-bold hover:bg-[#f0ede7] hover:cursor-pointer rounded px-2
+                ${location.pathname=="/settings" && 'border-b-2'}
+              `}>
+                  <button
+                    onClick={()=>{logout("user")}}
+                  >
+                    <LogOut size={30} color="#000000" className=''/>
+                  </button>
 
-            </div>
-          </Link>
+                </div>
+              </Link>
+          }
         </div>
       </div>
     </div>
