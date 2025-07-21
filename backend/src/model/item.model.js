@@ -8,6 +8,7 @@ const itemSchema = new mongoose.Schema({
     count:{
         type:Number,
         require:true,
+        default:1,
     },
     picUrl:{
         type:String,

@@ -17,9 +17,13 @@ export const sellerAuthMidWare=async(req,res,next)=>{
             
             const seller=await Seller.findOne({_id:decod.userId})
             if (!seller)
-                return res.status(400).json({message:"no seller exist"}
-            )
+                return res.status(400).json({message:"no seller exist"})
+        
+        // console.log(seller);
+            console.log("hai",seller);
+            
             req.user=seller
+
             console.log("authendicated");
             
             next()

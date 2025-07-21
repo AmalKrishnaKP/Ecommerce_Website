@@ -1,6 +1,7 @@
 import { TokenGeneration } from "../lib/token.js"
 import bcrypt from "bcryptjs"
 import { User} from "../model/user.model.js"
+import { log } from "node:console"
 
 export const signup=async(req,res)=>{
     // console.log(req.body);
@@ -25,8 +26,14 @@ export const signup=async(req,res)=>{
         })  
         await newU.save()
         TokenGeneration(newU._id,res)
-        if (newU)
-            res.status(200).json({newU})
+        return res.status(200).json({
+            _id:newU._id,
+            fullName:newU.fullName,
+            phone:newU.phone,
+            email:newU.email,
+            role:"seller"
+        }) 
+
     } catch (error) {
         res.status(500).json({message:error})
         console.log(error);
@@ -38,11 +45,12 @@ export const signup=async(req,res)=>{
 export const login=async(req,res)=>{
     try {
         const {email,password}=req.body
-
+        console.log(password);
+        
         if (!email ||!password)
             return res.status(400).json({message:"need all credential"})
 
-        const user=await User.findOne({email}).select("-password")
+        const user=await User.findOne({email})
         console.log(user);
         
         if (!user)
@@ -58,11 +66,16 @@ export const login=async(req,res)=>{
         }
         TokenGeneration(user._id,res)
         console.log(res.cookie);
-        return res.status(200).json({user})   
+        return res.status(200).json({
+            _id:user._id,
+            phone:user.phone,
+            email:user.email,
+            role:"user"
+        })   
 
     } catch (error) {
         res.status(500).json({messge:"server side error"})
-        console.log(error.message);
+        console.log(error);
         
         
     }
@@ -103,10 +116,18 @@ export const logout=async(req,res)=>{
 }   
 export const auth=async(req,res)=>{
     try {
-        res.status(200).json(res.user)
+        const user=req.user
+        console.log(req.user);
+        
+        return res.status(200).json({
+            _id:user._id,
+            phone:user.phone,
+            email:user.email,
+            role:"user"
+        })
     } catch (error) {
         res.status(500).json({message:"server side error"})
-        console.log(error.message);
+        console.log(error);
         
     }
 }

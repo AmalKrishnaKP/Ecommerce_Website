@@ -4,6 +4,7 @@ import { deleteUser, login, logout, signup, update ,auth} from '../controller/us
 import { userAuthMidWare } from '../middleware/userAuth.middileware.js'
 import cart from './cart.router.js'
 import order from './order.router.js'
+import itemR from './item.router.js'
 
 const user=express.Router()
 
@@ -18,5 +19,9 @@ user.delete("/delete",userAuthMidWare,deleteUser)
 user.use("/cart",userAuthMidWare,cart)
 
 user.use("/order",userAuthMidWare,order)
-user.get("/auth",auth)
+user.get("/auth",userAuthMidWare,auth)
+
+user.use("/item",userAuthMidWare,itemR)
+
+
 export default user

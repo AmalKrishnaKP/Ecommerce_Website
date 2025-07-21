@@ -17,6 +17,7 @@ seller.put("/update",sellerAuthMidWare,update)
 seller.delete("/delete",sellerAuthMidWare,deleteSeller)
 
 seller.use("/item",sellerAuthMidWare,itemR)
+
 seller.get("/showOrders",sellerAuthMidWare,showForSeller)
-seller.get("/auth",auth)
+seller.get("/auth",sellerAuthMidWare,auth)
 export default seller

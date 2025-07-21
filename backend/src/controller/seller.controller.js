@@ -41,7 +41,7 @@ export const login=async(req,res)=>{
         if (!email ||!password)
             return res.status(400).json({message:"need all credential"})
 
-        const seller=await Seller.findOne({email}).select("-password")
+        const seller=await Seller.findOne({email})
         console.log(seller);
         
         if (!seller)
@@ -102,7 +102,14 @@ export const logout=async(req,res)=>{
 }
 export const auth=async(req,res)=>{
     try {
-        res.status(200).json(res.user)
+        const user=req.user
+        
+        return res.status(200).json({
+            _id:user._id,
+            phone:user.phone,
+            email:user.email,
+            role:"seller"
+        })
     } catch (error) {
         res.status(500).json({message:"server side error"})
         console.log(error.message);

@@ -80,7 +80,15 @@ export const logout=async(req,res)=>{
 
 export const auth=async(req,res)=>{
     try {
-        res.status(200).json(res.user)
+        const user=req.user
+        console.log(req.user);
+        
+        return res.status(200).json({
+            _id:user._id,
+            phone:user.phone,
+            email:user.email,
+            role:"user"
+        })
     } catch (error) {
         res.status(500).json({message:"server side error"})
         console.log(error.message);

@@ -10,6 +10,6 @@ admin.delete("/deleteUser/:id",adminAuthMidWare,deleteOneUser)
 admin.post("/login",login)
 admin.get("/logout",logout)
 admin.post("/signup",signup)
-admin.get("/auth",auth)
+admin.get("/auth",adminAuthMidWare,auth)
 
 export default admin

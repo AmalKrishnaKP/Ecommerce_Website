@@ -5,6 +5,7 @@ export const userAuthMidWare=async(req,res,next)=>{
         // console.log(req.cookies);
         
         const token=req.cookies.jwt_token
+        
         // console.log(token);
         if (!token)
             return res.status(400).json({message:"no token"})
@@ -14,9 +15,11 @@ export const userAuthMidWare=async(req,res,next)=>{
         else{
             const user=await User.findOne({_id:decod.userId})
             if (!user)
-                return res.status(400).json({message:"no user exist"}
-            )
+                return res.status(400).json({message:"no user exist"})
+            console.log(user);
             req.user=user
+            console.log("hai");
+            
             console.log("authendicated");
             
             next()
