@@ -3,11 +3,17 @@ import { axiosInstance } from '../lib/axios'
 
 export const productStore=create((set,get)=>({
     products:[],
-    getProducts:async()=>{
+    getProducts:async(filter)=>{
         try {
-            const all=await axiosInstance.get("/")
+            const fil={
+                filter:filter,
+            }
+            const res=await axiosInstance.post("user/item/getItems",fil)
+            if(res)
+                set({products:res.data})
+
         } catch (error) {
-            
+            toast.error(error.response.data.message)
         }
     }
 }))

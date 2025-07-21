@@ -24,6 +24,13 @@ export const authStore=create((set,get)=>({
             
         }
     },
+    signup:async()=>{
+        try {
+            
+        } catch (error) {
+            
+        }
+    },
     login:async(formdata)=>{
         try {
             

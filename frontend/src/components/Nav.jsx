@@ -12,23 +12,21 @@ const Nav = () => {
   
 
   return (
-    <div className="bg-[#ffffff] flex flex-col  items-center max-w-[100vw]">
-      <div className="font-bold text-5xl font-[Poppins] pt-2">
-        Pixelcrate
-      </div>
-      <div className=' w-full flex flex-row items-center justify-between px-4  py-2 w-min-[100vw] '>
-        <div className='min-w-[30vw] max-sm:min-w-0'>
-          {/* <img src="src/assets/T2.png" alt="img" className='h-[80px]' /> */}
+    <div className="bg-[#ffffff] flex flex-row items-center w-[100vw] px-2 py-3 fixed ">
+      
+      <div className=' w-full flex flex-row items-center justify-between px-4 py-2  w-min-[100vw] '>
+        <div className='font-[Poppins] font-bold text-3xl  max-sm:text-[20px] min-w-[30vw] max-sm:min-w-0'>
+          Pixelcrate
         </div>
         <div className="flex-1 max-w-[30vw]  max-sm:max-w-[50vw]">
-          <div className="bg-[#ffffff] flex flex-row justify-between items-center h-8  px-2 text-[20px] font-medium">
+          <div className="bg-[#ffffff] flex flex-row justify-between items-center h-8  px-2 text-[20px]  font-medium">
             { authUser && authUser.role=="user" &&(
               <div className={`
-                flex flex-row  items-center text-md font-bold hover:bg-[#f0ede7] hover:cursor-pointer rounded px-1 
+                flex flex-row  items-center text-md font-bold  hover:bg-[#f0ede7] hover:cursor-pointer rounded px-1 
                 ${location.pathname=="/shop" && 'border-b-2'}
               `}>
               <Link to={"/shop"}>
-              <h1>shop</h1>
+              <h1 className='max-sm:text-[15px]'>shop</h1>
             </Link>
             </div>
             )}
@@ -39,7 +37,7 @@ const Nav = () => {
                 ${location.pathname=="/" && 'border-b-2'}
               `}>
                 <Link to={"/"}>
-                  <h1>about</h1>
+                  <h1 className='max-sm:text-[15px]'>about</h1>
                 </Link>
               </div>
             )}
@@ -50,7 +48,7 @@ const Nav = () => {
                 ${location.pathname=="/support" && 'border-b-2'}
               `}>
                   <Link to={"/support"}>
-                    <h1>support</h1>
+                    <h1 className='max-sm:text-[15px]'>support</h1>
                   </Link>
                 </div>
               )}
@@ -65,7 +63,7 @@ const Nav = () => {
                 flex flex-row pr-3 items-center text-sm font-bold hover:bg-[#f0ede7] hover:cursor-pointer rounded px-2
                 ${location.pathname=="/cart" && 'border-b-2'}
               `}>
-                <ShoppingCart size={30} /> 
+                <ShoppingCart size={30} className='max-sm:w-[20px]'/> 
                 <h1 className='  max-md:hidden'>
                   Cart
                 </h1>
@@ -79,7 +77,7 @@ const Nav = () => {
                 flex flex-row pr-3 items-center text-sm font-bold hover:bg-[#f0ede7] hover:cursor-pointer rounded px-2
                 ${location.pathname=="/profile" && 'border-b-2'}
               `}>
-                <UserRoundCog size={30}/>
+                <UserRoundCog size={30} className='max-sm:w-[20px]'/>
                 <h1 className="max-md:hidden">
                   Profile  
                 </h1>
@@ -96,7 +94,7 @@ const Nav = () => {
                   <button
                     onClick={()=>{logout("user")}}
                   >
-                    <LogOut size={30} color="#000000" className=''/>
+                    <LogOut size={30} color="#000000" className='max-sm:w-[20px]'/>
                   </button>
 
                 </div>

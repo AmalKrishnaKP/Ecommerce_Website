@@ -2,9 +2,7 @@ import React from 'react'
 import { User ,Mail,Phone,Lock,Eye,EyeOff  } from 'lucide-react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-// import { set } from 'mongoose';
-const SignupPage = () => {
-    // preventdefault()
+const SignupForm = () => {
     const [formdata,setdata]=useState({
         fullName:"",
         phone:"",
@@ -18,10 +16,10 @@ const SignupPage = () => {
 
     const handleSubmit=(e)=>{
         e.preventDefault()
+        
     }
   return (
-    <div className='flex flex-col items-center justify-center opacity-100 '>
-        <div className=" flex flex-col items-center justify-center border min-w-[500px] max-sm:min-w-[400px] bg-[#f9f9f9]  rounded-2xl shadow-2xl pb-3">
+    <div className="   flex flex-col items-center justify-center border min-w-[500px] max-sm:min-w-[400px] bg-[#f9f9f9]  rounded-2xl shadow-2xl pb-3 float-right">
             <div className="logo">
                 <img src="src/assets/logo.png" alt="" className='w-[150px]' />
             </div>
@@ -131,8 +129,7 @@ const SignupPage = () => {
                 </div>
             </form>
         </div>
-    </div>
   )
 }
 
-export default SignupPage
+export default SignupForm
