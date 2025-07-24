@@ -27,7 +27,7 @@ const App = () => {
   
 
   return (
-    <div className="relative bg-[url(src/assets/T2.png)] bg-no-repeat bg-size-[60vh] bg-center" >
+    <div className="relative bg-[url(https://res.cloudinary.com/dezj3e0et/image/upload/v1753387256/T2_rz8c0n.png)] bg-no-repeat bg-size-[60vh] bg-center" >
       <Toaster />
       <div className='flex flex-col justify-start   bg-[#f7f7fa]  bg-center h-full opacity-97'>
         <Nav />

@@ -5,11 +5,8 @@ const SignupPage = () => {
     // preventdefault()
     
   return (
-    <div className='flex  items-center justify-center opacity-100  px-3  pt-20  '>
-      <div className=''>
-        <img src="src/assets/bgimage.png" alt=""   />
-
-      </div>
+    <div className='flex w-full bg-[url(https://res.cloudinary.com/dezj3e0et/image/upload/v1753387277/bgimage_l2bvlf.png)] items-center justify-center opacity-100  px-3  pt-20  '>
+      
         <SignupForm />
     </div>
   )
