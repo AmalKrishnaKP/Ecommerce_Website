@@ -25,7 +25,7 @@ export const productStore=create((set,get)=>({
     },
     getCart:async()=>{
         try {
-            const res=await axiosInstance.get("http://localhost:5000/api/user/cart/showCart")
+            const res=await axiosInstance.get("user/cart/showCart")
             // console.log(res.data)
             
             set({cart:res.data})
@@ -35,7 +35,7 @@ export const productStore=create((set,get)=>({
     },
     addCart:async(itemId)=>{
         try {
-            const res= await axiosInstance.put("http://localhost:5000/api/user/cart/addCart",{itemId})
+            const res= await axiosInstance.put("user/cart/addCart",{itemId})
             if (res)
                 toast.success(res.data.message)
             
@@ -49,7 +49,7 @@ export const productStore=create((set,get)=>({
     updateCart:async(itemId,count)=>{
         try {
             
-            const res=await axiosInstance.patch("http://localhost:5000/api/user/cart/updateCart",{itemId,count})
+            const res=await axiosInstance.patch("user/cart/updateCart",{itemId,count})
             // console.log(res); 
             
         } catch (error) {
@@ -62,7 +62,7 @@ export const productStore=create((set,get)=>({
         try {
             // console.log(itemId);
             
-            const res=await axiosInstance.patch("http://localhost:5000/api/user/cart/deletecart",{itemId})
+            const res=await axiosInstance.patch("user/cart/deletecart",{itemId})
             // console.log(res)
             toast.success(res.data.message)
         } catch (error) {
@@ -73,7 +73,7 @@ export const productStore=create((set,get)=>({
     },
     proceedCart:async()=>{
         try {
-            const res=await axiosInstance.get("http://localhost:5000/api/user/cart/proceedCart")
+            const res=await axiosInstance.get("user/cart/proceedCart")
             set({avail:res.data.avail})
             set({notAvail:res.data.notAvail})
             set({total:res.data.total})
@@ -86,7 +86,7 @@ export const productStore=create((set,get)=>({
     },
     order:async()=>{
         try {
-            const res = await axiosInstance.post("http://localhost:5000/api/user/order/addOrder")
+            const res = await axiosInstance.post("user/order/addOrder")
             set({loading:false})
             toast.success(res.data.message)
         } catch (error) {
@@ -97,7 +97,7 @@ export const productStore=create((set,get)=>({
     additem:async(formdata)=>{
         set({loading:true})
         try {
-            const res = await axiosInstance.post("http://localhost:5000/api/seller/item/additem",formdata)
+            const res = await axiosInstance.post("seller/item/additem",formdata)
             toast.success(res.data.message)
             console.log(res.data);
             

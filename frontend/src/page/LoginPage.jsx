@@ -26,7 +26,7 @@ const LoginPage = () => {
     login(formdata)  
   }
   return (
-    <div className=' flex  items-start justify-center opacity-100  px-3  pt-20  '>
+    <div className=' flex  items-start justify-center opacity-100  px-3  pt-30'>
         <div className='max-md:hidden max-w-[720px]'>
         <img src="src/assets/bgimage.png" alt=""   />
 
