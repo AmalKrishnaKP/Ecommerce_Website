@@ -2,7 +2,9 @@ import React from 'react'
 import { User ,Mail,Phone,Lock,Eye,EyeOff  } from 'lucide-react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { authStore } from '../store/authStore.js';
 const SignupForm = () => {
+    const {signup}=authStoreth()
     const [formdata,setdata]=useState({
         fullName:"",
         phone:"",
@@ -15,7 +17,13 @@ const SignupForm = () => {
     const [password,showpass]=useState(false)
 
     const handleSubmit=(e)=>{
-        e.preventDefault()
+       e.preventDefault()  
+        if (!formdata.email || !formdata.password || !formdata.role){
+            return toast.error("need all credentials")
+        }
+        console.log("passed");
+        
+        signup(formdata)  
         
     }
   return (
