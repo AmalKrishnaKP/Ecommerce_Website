@@ -4,7 +4,7 @@ import Nav from './components/Nav.jsx'
 
 import { authStore } from './store/authStore.js'
 import {Toaster} from 'react-hot-toast'
-import LoginPage from './page/loginPage.jsx'
+import LoginPage from './page/LoginPage.jsx'
 import SignupPage from './page/SignupPage.jsx' 
 import ShopPage from './page/ShopPage.jsx'
 import SellPage from './page/SellPage.jsx'
