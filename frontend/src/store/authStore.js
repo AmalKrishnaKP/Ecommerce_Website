@@ -29,7 +29,20 @@ export const authStore=create((set,get)=>({
     },
     signup:async()=>{
         try {
-            
+            set({loadingA:true})
+            if (formdata.role=="user"){
+                const res=await axiosInstance.post("user/signup",formdata)
+                set({authUser:res.data})
+                // console.log(get().authUser);
+                
+            }
+            else if (formdata.role=="seller"){
+                const res=await axiosInstance.post("seller/signup",formdata)
+                set({authUser:res.data})
+                console.log(get().authUser);
+                
+            }
+            set({loadingA:false})
         } catch (error) {
             
         }
