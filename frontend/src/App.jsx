@@ -12,11 +12,13 @@ import CartPage from './page/CartPage.jsx'
 import SupportPage from './page/SupportPage.jsx'
 import ProfilePage from './page/ProfilePage.jsx'
 import AboutUsPage from './page/AboutUsPage.jsx'
+import { Loader } from 'lucide-react'
+import { productStore } from './store/productStore.js'
 
 const App = () => {
-
+  const {loadingA}=authStore()
   const {checkAuth ,authUser}=authStore()
-
+  const {loading}=productStore()
   useEffect(()=>{
     checkAuth("user")
     checkAuth("seller")
@@ -25,10 +27,12 @@ const App = () => {
   
 
   return (
-    <div className=" bg-[url(src/assets/T2.png)] bg-no-repeat bg-size-[60vh] bg-center" >
+    <div className="relative bg-[url(src/assets/T2.png)] bg-no-repeat bg-size-[60vh] bg-center" >
       <Toaster />
-      <div className='flex flex-col justify-start h-[100vh]  bg-[#f7f7fa]  bg-center  opacity-97'>
+      <div className='flex flex-col justify-start   bg-[#f7f7fa]  bg-center h-full opacity-97'>
         <Nav />
+        
+
         <Routes>
           <Route path='/' element={authUser?<AboutUsPage />: <Navigate to="/login"/>}/>
           <Route path='/login' element={authUser?<Navigate to="/"/>:<LoginPage />} />
@@ -42,8 +46,20 @@ const App = () => {
           
           <Route path='*' element={<Navigate to="/" />} />
         </Routes>
-        
+        { loading &&
+          (<div className="absolute top-0 left-0 w-full h-full bg-amber-50/50 z-21 flex justify-center items-center">
+          <Loader className='size-6 animate-spin' />
+
+          </div>)
+        }
+        { loadingA &&
+          (<div className="absolute top-0 left-0 w-full h-full bg-amber-50/50 z-21 flex justify-center items-center">
+          <Loader className='size-6 animate-spin' />
+
+          </div>)
+        }
       </div>
+
     </div>
   )
 }

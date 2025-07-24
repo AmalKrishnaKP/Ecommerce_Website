@@ -57,7 +57,13 @@ export const login=async(req,res)=>{
         }
         TokenGeneration(seller._id,res)
         console.log(res.cookie);
-        return res.status(200).json({seller})   
+        // return res.status(200).json({seller})
+        return res.status(200).json({
+            _id:seller._id,
+            phone:seller.phone,
+            email:seller.email,
+            role:"seller"
+        })   
 
     } catch (error) {
         res.status(500).json({messge:"server side error"})

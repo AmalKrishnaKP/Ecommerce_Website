@@ -26,10 +26,10 @@ const CartItem = (props) => {
 
   return (
     <div className={`${remove?'hidden':''}`}>
-      <div className="w-full bg-[#ffffff] border-1 shadow-xl p-5 rounded-2xl max-sm:max-h-[200px]">
-        <div className='flex flex-row justify-between'>
+      <div className="w-full  bg-[#ffffff] border-1 shadow-xl p-5 rounded-2xl max-sm:max-h-[200px]">
+        <div className='flex flex-row justify-between '>
             <div className='h-full '>
-              <img src={props.item.picUrl} alt="" className='h-full max-sm:max-h-[150px]'/>
+              <img src={props.item.picUrl} alt="" className='h-full max-sm:max-h-[150px] max-h-[510px]'/>
             </div>
             <div className="flex flex-col justify-between">
               <div>

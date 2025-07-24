@@ -10,7 +10,10 @@ export const addItem=async(req,res)=>{
         {
             return res.status(400).json({message:"need all credential"})
         }
-
+        const pr=await Item.findOne({name,sellerId})
+        if (pr){
+            return res.status(400).json({message:"product already present"})
+        }
         const picUrl=(await  cloudinary.uploader.upload(pic)).secure_url
         console.log(picUrl);
         
@@ -24,7 +27,7 @@ export const addItem=async(req,res)=>{
 
         })
         await newI.save()
-        res.status(200).json({newI})
+        res.status(200).json({message:"item added",newI})
     } catch (error) {
         res.status(500).json({message:"server side error"})
         console.log(error);

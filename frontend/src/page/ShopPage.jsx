@@ -18,13 +18,13 @@ const ShopPage = () => {
   ))
 
   return (
-    <div className='flex flex-col pt-20 w-full '>
+    <div className='flex flex-col pt-20 max-w-full '>
       <div className='w-full bg-[#f9f9f9] mt-3 p-5 z-11 '>
           <h1 className="text-5xl max-sm:text-3xl font-[Poppins] mb-2"> All Products</h1>
           <p className="text-md font-[Poppins] max-sm:text-sm">Timeless design, quality Products, and forever exchanged.</p>
       </div>
 
-      <div className="w-100">
+      <div className="w-full">
           <select name="filter" id="filter"
             onChange={(e)=>{setFilter(e.target.value);
             }}
@@ -35,7 +35,7 @@ const ShopPage = () => {
             <option value="accesseries">accesseries</option>
           </select>
       </div>
-      <div className="relative  grid grid-cols-3 gap-x-2 max-sm:grid-cols-1 max-sm:px-14">
+      <div className="relative max-w-full grid grid-cols-3 gap-x-2 max-sm:grid-cols-1 max-sm:px-14 ">
             {items}
       </div>
     </div>

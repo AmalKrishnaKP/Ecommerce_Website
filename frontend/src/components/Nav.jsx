@@ -8,6 +8,8 @@ const Nav = () => {
   
   const {authUser,logout}=authStore()
   const location=useLocation()
+  console.log(authUser);
+  
   
   
 
@@ -27,6 +29,16 @@ const Nav = () => {
               `}>
               <Link to={"/shop"}>
               <h1 className='max-sm:text-[15px]'>shop</h1>
+            </Link>
+            </div>
+            )}
+            { authUser && authUser.role=="seller" &&(
+              <div className={`
+                flex flex-row  items-center text-md font-bold  hover:bg-[#f0ede7] hover:cursor-pointer rounded px-1 
+                ${location.pathname=="/sell" && 'border-b-2'}
+              `}>
+              <Link to={"/sell"}>
+              <h1 className='max-sm:text-[15px]'>Sell</h1>
             </Link>
             </div>
             )}

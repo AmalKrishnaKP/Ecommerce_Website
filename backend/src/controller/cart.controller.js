@@ -10,6 +10,7 @@ export const addCart=async(req,res)=>{
         const present=await Cart.findOne({
             userid,
             "items.itemId":itemId
+            
         
         })
         console.log(present);
@@ -85,6 +86,7 @@ export const procedcart=async(req,res)=>{
     try {
         const avail=[]
         const notAvail=[]
+        let total=0
         const userid=req.user._id
         const cartItems=await Cart.findOne({userid})
         if(!cartItems){
@@ -101,6 +103,7 @@ export const procedcart=async(req,res)=>{
                     picUrl: product.picUrl,
                     price: item.count * product.price,
                 }
+                total+=item.count * product.price
                 console.log(addAvail)
 
                 avail.push(addAvail)
@@ -121,7 +124,7 @@ export const procedcart=async(req,res)=>{
         console.log(avail);
         console.log(notAvail);
         
-        res.status(200).json({avail,notAvail})
+        res.status(200).json({avail,notAvail,total})
     } catch (error) {
         res.status(500).json({message:"server side error"})
         console.log(error.message);

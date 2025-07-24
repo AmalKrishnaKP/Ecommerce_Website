@@ -6,6 +6,10 @@ import axios from 'axios'
 export const productStore=create((set,get)=>({
     products:[],
     cart:[],
+    avail:[],
+    notAvail:[],
+    total:0,
+    loading:false,
     getProducts:async(filter)=>{
         try {
             const fil={
@@ -46,7 +50,7 @@ export const productStore=create((set,get)=>({
         try {
             
             const res=await axiosInstance.patch("http://localhost:5000/api/user/cart/updateCart",{itemId,count})
-            console.log(res); 
+            // console.log(res); 
             
         } catch (error) {
             toast.error(error.response.data.message)
@@ -56,7 +60,7 @@ export const productStore=create((set,get)=>({
     },
     deleteItemCart:async(itemId)=>{
         try {
-            console.log(itemId);
+            // console.log(itemId);
             
             const res=await axiosInstance.patch("http://localhost:5000/api/user/cart/deletecart",{itemId})
             // console.log(res)
@@ -66,5 +70,41 @@ export const productStore=create((set,get)=>({
             console.log(error);
             
         }
+    },
+    proceedCart:async()=>{
+        try {
+            const res=await axiosInstance.get("http://localhost:5000/api/user/cart/proceedCart")
+            set({avail:res.data.avail})
+            set({notAvail:res.data.notAvail})
+            set({total:res.data.total})
+            
+        } catch (error) {
+            toast.error(error.response.message)
+            console.log(error);
+            
+        }
+    },
+    order:async()=>{
+        try {
+            const res = await axiosInstance.post("http://localhost:5000/api/user/order/addOrder")
+            set({loading:false})
+            toast.success(res.data.message)
+        } catch (error) {
+            toast.error(error.response.message)
+            console.log(error);
+        }
+    },
+    additem:async(formdata)=>{
+        set({loading:true})
+        try {
+            const res = await axiosInstance.post("http://localhost:5000/api/seller/item/additem",formdata)
+            toast.success(res.data.message)
+            console.log(res.data);
+            
+        } catch (error) {
+            toast.error(error.response.data.message)
+            console.log(error.response.data.message);
+        }
+        set({loading:false})
     }
 }))

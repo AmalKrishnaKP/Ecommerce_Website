@@ -10,14 +10,14 @@ const ItemDetail = ({product,onclik,showDetail}) => {
 
     showDetail &&
     (
-        <div className='fixed inset-0 bg-yellow-50/50 z-10 overflow-hidden'>
+        <div className='fixed inset-0 bg-yellow-50/50 z-20 overflow-hidden'>
 
-            <div className=" absolute top-[60%] left-1/2 transform -translate-x-1/2 -translate-y-1/2   max-h-[60%] min-w-[400px] flex flex-col justify-center  bg-[#ffffff] items-center  opacity-100  rounded-2xl shadow-2xl border-1 p-1">
-                <div className="flex flex-col justify-end items-end  w-full pt-4">
+            <div className=" absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2   max-h-[60%] min-w-[400px] flex flex-col justify-center  bg-[#ffffff] items-center  opacity-100  rounded-2xl shadow-2xl border-1 p-1">
+                <div className="flex flex-col justify-end items-end  w-full pt-2 pr-2">
                     <button
                         onClick={()=>onclik()}
                         >
-                            cancle
+                           X
                     </button>
                 </div>
                 <div className="flex flex-row ">
