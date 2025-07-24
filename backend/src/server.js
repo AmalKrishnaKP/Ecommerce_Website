@@ -5,6 +5,7 @@ import { connectDB } from './lib/db.js';
 import main from './router/main.router.js';
 import cors from 'cors'
 import path, { join } from 'path'
+const __dirname=path.resolve()
 dotenv.config()
 const app=express()
 app.use(cors({
