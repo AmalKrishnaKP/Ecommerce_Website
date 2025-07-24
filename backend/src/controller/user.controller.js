@@ -31,7 +31,7 @@ export const signup=async(req,res)=>{
             fullName:newU.fullName,
             phone:newU.phone,
             email:newU.email,
-            role:"seller"
+            role:"user"
         }) 
 
     } catch (error) {

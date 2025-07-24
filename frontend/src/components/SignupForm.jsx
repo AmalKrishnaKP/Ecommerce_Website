@@ -34,10 +34,10 @@ const SignupForm = () => {
             </div>
             <form onSubmit={handleSubmit} >
                 <div className='flex flex-row justify-evenly'>
-                    <button type='button' className={`p-2 border-black border-2 rounded-xl min-w-[100px] ${formdata.role=="Buyer"?'bg-black text-white':''}`}
+                    <button type='button' className={`p-2 border-black border-2 rounded-xl min-w-[100px] ${formdata.role=="user"?'bg-black text-white':''}`}
                         onClick={()=>{setdata({... formdata,role:"user"})}}
                     >Buyer</button> 
-                    <button type='button' className={`p-2 border-black border-2 rounded-xl min-w-[100px] ${formdata.role=="Seller"?'bg-black text-white':''}`}
+                    <button type='button' className={`p-2 border-black border-2 rounded-xl min-w-[100px] ${formdata.role=="seller"?'bg-black text-white':''}`}
                         onClick={()=>{setdata({... formdata,role:"seller"})}}
                     >Seller</button>
                 </div>

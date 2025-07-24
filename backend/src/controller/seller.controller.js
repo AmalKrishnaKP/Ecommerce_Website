@@ -25,7 +25,13 @@ export const signup=async(req,res)=>{
         await newS.save()
         TokenGeneration(newS._id,res)
         if (newS)
-            res.status(200).json({newS})
+            return res.status(200).json({
+            _id:newS._id,
+            fullName:newS.fullName,
+            phone:newS.phone,
+            email:newS.email,
+            role:"seller"
+        }) 
     } catch (error) {
         res.status(500).json({message:error})
         console.log(error);

@@ -20,36 +20,41 @@ export const authStore=create((set,get)=>({
                 const res=await axiosInstance.get("seller/auth")
                 set({authUser:res.data})
             }
-            set({loadingA:false})
             
         } catch (error) {
             console.log(error.message);
             
         }
+        finally{
+            set({loadingA:false})
+            
+        }
     },
     signup:async(formdata)=>{
         try {
-            console.log(formdata,"jai");
+            // console.log(formdata,"jai");
             
             set({loadingA:true})
             if (formdata.role=="user"){
                 const res=await axiosInstance.post("user/signup",formdata)
                 console.log(res);
-                
-                console.log(get().authUser);
+                set({authUser:res.data}) 
+                // console.log(get().authUser);
                 
             }
             else if (formdata.role=="seller"){
                 const res=await axiosInstance.post("seller/signup",formdata)
                 set({authUser:res.data})
-                console.log(get().authUser);
+                // console.log(get().authUser);
                 
             }
-            set({loadingA:false})
+            // set({loadingA:false})
         } catch (error) {
             console.log(error);
-            set({loadingA:false})
             
+        }finally{
+            set({loadingA:false})
+
         }
     },
     login:async(formdata)=>{
@@ -67,10 +72,13 @@ export const authStore=create((set,get)=>({
                 console.log(get().authUser);
                 
             }
-            set({loadingA:false})
         } catch (error) {
             toast.error(error.response.data.message);
             
+        }
+        finally{
+            set({loadingA:false})
+
         }
     },
     logout:async(role)=>{
