@@ -4,6 +4,7 @@ import cookieParser from 'cookie-parser'
 import { connectDB } from './lib/db.js';
 import main from './router/main.router.js';
 import cors from 'cors'
+import path, { join } from 'path'
 dotenv.config()
 const app=express()
 app.use(cors({
