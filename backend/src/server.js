@@ -15,7 +15,13 @@ app.use(express.json())
 app.use(cookieParser())
 
 app.use("/api",main)
+if (process.env.NODE_ENV=="production"){
+  app.use(express.static(path.join(__dirname,"../frontend/dist")))
 
+  app.get('/{*any}', (req, res) => {
+    res.sendFile(path.join(__dirname,"../frontend","dist","index.html"))
+  })
+}
 
 app.listen(5000,()=>{
     console.log("server listening");
