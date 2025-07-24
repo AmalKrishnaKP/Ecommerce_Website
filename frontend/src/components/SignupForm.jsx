@@ -3,6 +3,7 @@ import { User ,Mail,Phone,Lock,Eye,EyeOff  } from 'lucide-react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { authStore } from '../store/authStore.js';
+import toast from 'react-hot-toast';
 const SignupForm = () => {
     const {signup}=authStore()
     const [formdata,setdata]=useState({
@@ -34,10 +35,10 @@ const SignupForm = () => {
             <form onSubmit={handleSubmit} >
                 <div className='flex flex-row justify-evenly'>
                     <button type='button' className={`p-2 border-black border-2 rounded-xl min-w-[100px] ${formdata.role=="Buyer"?'bg-black text-white':''}`}
-                        onClick={()=>{setdata({... formdata,role:"Buyer"})}}
+                        onClick={()=>{setdata({... formdata,role:"user"})}}
                     >Buyer</button> 
                     <button type='button' className={`p-2 border-black border-2 rounded-xl min-w-[100px] ${formdata.role=="Seller"?'bg-black text-white':''}`}
-                        onClick={()=>{setdata({... formdata,role:"Seller"})}}
+                        onClick={()=>{setdata({... formdata,role:"seller"})}}
                     >Seller</button>
                 </div>
                 <div className="form-control pb-1">
