@@ -24,7 +24,9 @@ const LoginForm = () => {
     login(formdata)  
   }
   return (
-    <div className=" flex flex-col items-center justify-center border w-[400px] bg-[#f9f9f9] rounded-2xl shadow-2xl pb-3  float-right  mb-100">
+    <div className="">
+
+    <div className=" flex flex-col items-center justify-center border min-w-[400px] bg-[#f9f9f9] rounded-2xl shadow-2xl pb-3  float-right  mb-100">
             <div className="logo">
                 <img src="src/assets/logo.png" alt="" className='w-[150px]' />
             </div>
@@ -94,6 +96,7 @@ const LoginForm = () => {
             </form>
         </div>
     
+        </div>
   )
 }
 

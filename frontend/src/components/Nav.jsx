@@ -12,7 +12,7 @@ const Nav = () => {
   
 
   return (
-    <div className="bg-[#ffffff] flex flex-row items-center w-[100vw] px-2 py-3 fixed ">
+    <div className="bg-[#ffffff] flex flex-row items-center w-[100vw] px-2 py-3 fixed z-20">
       
       <div className=' w-full flex flex-row items-center justify-between px-4 py-2  w-min-[100vw] '>
         <div className='font-[Poppins] font-bold text-3xl  max-sm:text-[20px] min-w-[30vw] max-sm:min-w-0'>

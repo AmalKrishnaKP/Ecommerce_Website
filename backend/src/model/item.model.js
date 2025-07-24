@@ -18,7 +18,7 @@ const itemSchema = new mongoose.Schema({
         type:String,
         require:true,
     },
-    dress_type:{
+    elec_type:{
         type:String,
         require:true,
     },

@@ -30,6 +30,11 @@ export const addOrderFromCart=async(req,res)=>{
                         }
                     }
                 )
+                await Item.findOneAndUpdate({_id:item.itemId},
+                    {
+                        count:product.count-item.count
+                    }
+                )
             }
             
         })

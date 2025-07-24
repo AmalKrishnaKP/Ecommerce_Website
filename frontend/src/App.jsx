@@ -21,13 +21,13 @@ const App = () => {
     checkAuth("user")
     checkAuth("seller")
   },[])
-  console.log(authUser);
+  // console.log(authUser);
   
 
   return (
     <div className=" bg-[url(src/assets/T2.png)] bg-no-repeat bg-size-[60vh] bg-center" >
       <Toaster />
-      <div className='flex flex-col justify-start h-[100vh]  bg-[#ffffff]  bg-center  opacity-97'>
+      <div className='flex flex-col justify-start h-[100vh]  bg-[#f7f7fa]  bg-center  opacity-97'>
         <Nav />
         <Routes>
           <Route path='/' element={authUser?<AboutUsPage />: <Navigate to="/login"/>}/>
@@ -42,6 +42,7 @@ const App = () => {
           
           <Route path='*' element={<Navigate to="/" />} />
         </Routes>
+        
       </div>
     </div>
   )

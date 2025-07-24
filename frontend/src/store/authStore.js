@@ -37,13 +37,13 @@ export const authStore=create((set,get)=>({
             if (formdata.role=="user"){
                 const res=await axiosInstance.post("user/login",formdata)
                 set({authUser:res.data})
-                console.log(get().authUser);
+                // console.log(get().authUser);
                 
             }
             else if (formdata.role=="seller"){
                 const res=await axiosInstance.post("seller/login",formdata)
                 set({authUser:res.data})
-                console.log(get().authUser);
+                // console.log(get().authUser);
                 
             }
         } catch (error) {

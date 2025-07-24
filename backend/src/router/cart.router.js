@@ -5,7 +5,7 @@ const cart = express.Router()
 cart.get("/showCart",showCart)
 cart.put("/addCart",addCart)
 cart.patch("/updatecart",updateCart)
-cart.delete("/deletecart",deleteCart)
+cart.patch("/deletecart",deleteCart)
 cart.get('/proceedCart',procedcart)
 
 export default cart

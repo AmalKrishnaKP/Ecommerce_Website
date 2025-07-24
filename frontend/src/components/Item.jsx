@@ -1,24 +1,31 @@
 import React from 'react'
-
+import { useState } from 'react'
+import ItemDetail from './ItemDetail.jsx'
 const Item = (props) => {
+    const [showDetail,setShowDetail]=useState(false)
   return (
-    <div className="w-[100%] object-contain  p-2 m-3 bg-[#f9f9f9]  ">
+    <div>
+    <div className="w-full object-contain  p-2 m-3 bg-[#ffffff]  "
+        onClick={()=>{setShowDetail(!showDetail)}}
+    >
         <div className='mb-4 flex justify-center' >
-            <img className="w-[25vw] h-[25vw] object-contain " src="https://res.cloudinary.com/dezj3e0et/image/upload/v1753093133/qstanugyh7qo94snebzh.jpg" alt="" />
+            <img className="w-[25vw] h-[25vw] object-contain " src={props.product.picUrl} alt="" />
         </div>
         <div className="px-4 flex flex-row justify-between items-center pr-6">
             <div className="flex flex-col">
-                <h2 className="font-[Poppins]">LapTop</h2>
-                <h2 className="font-[Poppins]">₹ 15000</h2>
+                <h2 className="font-[Poppins]">{props.product.name}</h2>
+                <h2 className="font-[Poppins]">₹ {props.product.price}</h2>
             </div>
-            <div className="">
-                <button className='border text-white bg-black rounded-2xl py-2 px-7'>
-                    Cart
-                </button>
-            </div>
+            
         </div>
     </div>
+    <ItemDetail
+        product={props.product}
+        onclik={()=>setShowDetail(!showDetail)}
+        showDetail={showDetail}
+    />
+    </div>
   )
-}
+} 
 
 export default Item

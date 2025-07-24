@@ -39,6 +39,7 @@ export const getItems=async(req,res)=>{
 
              all= await Item.find()
         }
+        else
         if(!all){
             return res.status(400).json({message:"no products detected"})
         }

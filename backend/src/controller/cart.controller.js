@@ -1,17 +1,30 @@
+import mongoose from "mongoose"
 import { Cart } from "../model/cart.model.js"
 import { Item } from "../model/item.model.js"
 
+ 
 export const addCart=async(req,res)=>{
     try {
-        const {itemId,count}=req.body
+        const {itemId}=req.body
         const userid=req.user._id
+        const present=await Cart.findOne({
+            userid,
+            "items.itemId":itemId
+        
+        })
+        console.log(present);
+        
+        if (present)
+        {
+            return res.status(400).json({message:"product already in cart"})
+        }    
         const cart=await Cart.findOneAndUpdate({userid},
             {
                 $setOnInsert:{
                     userid
                 },
                 $push:{
-                    items:{itemId,count}
+                    items:{itemId,count:1}
                 }
             },
             {
@@ -29,6 +42,8 @@ export const addCart=async(req,res)=>{
 export const updateCart=async(req,res)=>{
     try {
         const {itemId,count}=req.body
+        console.log(itemId,count);
+        
         const userid=req.user._id
         const cart= await Cart.findOneAndUpdate({userid,"items.itemId":itemId},{
             $set:{
@@ -59,7 +74,7 @@ export const deleteCart=async(req,res)=>{
             },
             {new:true}
         )
-        res.status(200).json({message:"deleted successfully",item})
+        res.status(200).json({message:"removed successfully",item})
     } catch (error) {
         res.status(500).json({message:"server side error"})
         console.log(error.message);
@@ -122,7 +137,24 @@ export const showCart=async(req,res)=>{
             return res.status(400).json({message:"no item in cart yet"})
         }
         else{
-            return res.status(200).json(cart)
+            const items=await 
+            Promise.all(cart.items.map(async(item)=>{
+                if(item!=null)
+                {
+                return(
+                    
+                 { ... await Item.findOne({_id:item.itemId}).lean(),
+                    count:item.count
+                } //to remove unnecessory data and to get only object from the model
+                )
+                    
+                }
+            }
+                
+            ))
+            console.log(items);
+            
+            return res.status(200).json(items)
         }
         
     } catch (error) {
