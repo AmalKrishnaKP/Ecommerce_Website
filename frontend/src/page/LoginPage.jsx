@@ -4,7 +4,7 @@ import { useState } from 'react'
 import toast from 'react-hot-toast'
 import { Link } from 'react-router-dom'
 import { authStore } from '../store/authStore.js'
-import LoginForm from '../components/loginForm.jsx'
+import LoginForm from '../components/LoginForm.jsx'
 
 const LoginPage = () => {
 
