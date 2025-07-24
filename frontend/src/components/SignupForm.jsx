@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { authStore } from '../store/authStore.js';
 const SignupForm = () => {
-    const {signup}=authStoreth()
+    const {signup}=authStore()
     const [formdata,setdata]=useState({
         fullName:"",
         phone:"",
