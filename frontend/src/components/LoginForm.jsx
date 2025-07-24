@@ -28,7 +28,7 @@ const LoginForm = () => {
 
     <div className=" flex flex-col items-center justify-center border min-w-[400px] bg-[#f9f9f9] rounded-2xl shadow-2xl pb-3  float-right  mb-100">
             <div className="logo">
-                <img src="src/assets/logo.png" alt="" className='w-[150px]' />
+                <img src="https://res.cloudinary.com/dezj3e0et/image/upload/v1753386825/logo_tubdxy.png" alt="img" className='w-[150px]' />
             </div>
             <form onSubmit={handleSubmit} >
                 <div className='flex flex-row justify-evenly'>
