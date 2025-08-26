@@ -2,11 +2,11 @@ import { Item } from "../model/item.model.js";
 import cloudinary from "../lib/cloudinary.js";
 export const addItem=async(req,res)=>{
     try {
-        const {pic,count,discription,price,name}=req.body
+        const {pic,count,discription,price,name,elec_type}=req.body
         const sellerId=req.user._id
         // console.log(req.);
         
-        if (!pic || !count || !discription || !price)
+        if (!pic || !count || !discription || !price || !name || !elec_type)
         {
             return res.status(400).json({message:"need all credential"})
         }
@@ -23,6 +23,7 @@ export const addItem=async(req,res)=>{
             picUrl,
             discription,
             price,
+            elec_type,
             sellerId,
 
         })

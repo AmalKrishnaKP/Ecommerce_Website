@@ -1,6 +1,6 @@
 import express from 'express'
 
-import { deleteUser, login, logout, signup, update ,auth} from '../controller/user.controller.js'
+import { deleteUser, login, logout, signup, update ,auth, updateAvatar} from '../controller/user.controller.js'
 import { userAuthMidWare } from '../middleware/userAuth.middileware.js'
 import cart from './cart.router.js'
 import order from './order.router.js'
@@ -13,6 +13,7 @@ user.post("/signup",signup)
 user.post("/login",login)
 user.get("/logout",logout)
 user.put("/update",userAuthMidWare,update)
+user.put("/avatar",userAuthMidWare,updateAvatar)
 user.delete("/delete",userAuthMidWare,deleteUser)
 
 

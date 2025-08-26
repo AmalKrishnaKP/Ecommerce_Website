@@ -20,6 +20,10 @@ const userSchema= new mongoose.Schema({
     address:{
         type:String,
     }
+    ,
+    avatarUrl:{
+        type:String,
+    }
 
 
 })

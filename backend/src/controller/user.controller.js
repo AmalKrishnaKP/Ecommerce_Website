@@ -2,6 +2,7 @@ import { TokenGeneration } from "../lib/token.js"
 import bcrypt from "bcryptjs"
 import { User} from "../model/user.model.js"
 import { log } from "node:console"
+import cloudinary from "../lib/cloudinary.js"
 
 export const signup=async(req,res)=>{
     // console.log(req.body);
@@ -68,8 +69,11 @@ export const login=async(req,res)=>{
         console.log(res.cookie);
         return res.status(200).json({
             _id:user._id,
+            fullName:user.fullName,
             phone:user.phone,
             email:user.email,
+            address:user.address || "",
+            avatarUrl:user.avatarUrl || "",
             role:"user"
         })   
 
@@ -83,7 +87,8 @@ export const login=async(req,res)=>{
 export const update=async(req,res)=>{
     try {
         const update=await User.findOneAndUpdate({_id:req.user._id},{
-            address:req.body.address
+            address:req.body.address,
+            fullName:req.body.fullName || undefined,
         },{new:true})
         res.status(200).json({update})
     } catch (error) {
@@ -92,6 +97,19 @@ export const update=async(req,res)=>{
         
     }
     
+}
+export const updateAvatar=async(req,res)=>{
+    try{
+        const {pic}=req.body
+        if(!pic){
+            return res.status(400).json({message:"no image"})
+        }
+        const picUrl=(await cloudinary.uploader.upload(pic)).secure_url
+        const update = await User.findOneAndUpdate({_id:req.user._id},{avatarUrl:picUrl},{new:true})
+        res.status(200).json({avatarUrl:update.avatarUrl})
+    }catch(error){
+        res.status(500).json({message:"server side error"})
+    }
 }
 export const deleteUser=async(req,res)=>{
     try {
@@ -121,8 +139,11 @@ export const auth=async(req,res)=>{
         
         return res.status(200).json({
             _id:user._id,
+            fullName:user.fullName,
             phone:user.phone,
             email:user.email,
+            address:user.address || "",
+            avatarUrl:user.avatarUrl || "",
             role:"user"
         })
     } catch (error) {

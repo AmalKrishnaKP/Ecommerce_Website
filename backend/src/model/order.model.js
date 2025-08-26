@@ -20,6 +20,9 @@ const orderSchema = new mongoose.Schema({
     currentStatus:{
         type:String,
         default:"pending"
+    },
+    deliveryPhone:{
+        type:String,
     }
 })
 

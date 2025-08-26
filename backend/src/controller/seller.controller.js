@@ -1,6 +1,7 @@
 import { TokenGeneration } from "../lib/token.js"
 import bcrypt from "bcryptjs"
 import  {Seller}  from "../model/seller.model.js"
+import cloudinary from "../lib/cloudinary.js"
 export const signup=async(req,res)=>{
     // console.log(req.body);
     
@@ -63,11 +64,13 @@ export const login=async(req,res)=>{
         }
         TokenGeneration(seller._id,res)
         console.log(res.cookie);
-        // return res.status(200).json({seller})
         return res.status(200).json({
             _id:seller._id,
+            fullName:seller.fullName,
             phone:seller.phone,
             email:seller.email,
+            address:seller.address || "",
+            avatarUrl:seller.avatarUrl || "",
             role:"seller"
         })   
 
@@ -81,7 +84,8 @@ export const login=async(req,res)=>{
 export const update=async(req,res)=>{
     try {
         const update=await Seller.findOneAndUpdate({_id:req.user._id},{
-            address:req.body.address
+            address:req.body.address,
+            fullName:req.body.fullName || undefined,
         },{new:true})
         res.status(200).json({update})
     } catch (error) {
@@ -90,6 +94,19 @@ export const update=async(req,res)=>{
         
     }
     
+}
+export const updateAvatar=async(req,res)=>{
+    try{
+        const {pic}=req.body
+        if(!pic){
+            return res.status(400).json({message:"no image"})
+        }
+        const picUrl=(await cloudinary.uploader.upload(pic)).secure_url
+        const update = await Seller.findOneAndUpdate({_id:req.user._id},{avatarUrl:picUrl},{new:true})
+        res.status(200).json({avatarUrl:update.avatarUrl})
+    }catch(error){
+        res.status(500).json({message:"server side error"})
+    }
 }
 export const deleteSeller=async(req,res)=>{
     try {
@@ -118,8 +135,11 @@ export const auth=async(req,res)=>{
         
         return res.status(200).json({
             _id:user._id,
+            fullName:user.fullName,
             phone:user.phone,
             email:user.email,
+            address:user.address || "",
+            avatarUrl:user.avatarUrl || "",
             role:"seller"
         })
     } catch (error) {

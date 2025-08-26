@@ -48,7 +48,7 @@ export const addOrderFromCart=async(req,res)=>{
 export const showForUser=async(req,res)=>{
     try {
         const userid=req.user._id
-        const orders= await Order.find({userid})
+        const orders= await Order.find({userid}).populate({path:'itemId',select:'name picUrl'})
         if(!orders){
             return res.status(400).json({message:"no orders"})
         }
@@ -61,8 +61,8 @@ export const showForUser=async(req,res)=>{
 }
 export const showForSeller=async(req,res)=>{
     try {
-        const sellerId=req.seller._id
-        const orders= await Order.find({sellerId})
+        const sellerId=req.user._id
+        const orders= await Order.find({sellerId}).populate({path:'itemId',select:'name picUrl'})
         if(!orders){
             return res.status(400).json({message:"no orders"})
         }
@@ -73,5 +73,26 @@ export const showForSeller=async(req,res)=>{
          res.status(500).json({message:"server side error"})
          console.log(error.message);
          
+    }
+}
+
+export const markOrderSuccess=async(req,res)=>{
+    try {
+        const sellerId=req.user._id
+        const {orderId,deliveryPhone}=req.body
+        if(!orderId || !deliveryPhone){
+            return res.status(400).json({message:"orderId and deliveryPhone required"})
+        }
+        const order=await Order.findOne({_id:orderId,sellerId})
+        if(!order){
+            return res.status(404).json({message:"order not found"})
+        }
+        order.currentStatus="success"
+        order.deliveryPhone=deliveryPhone
+        await order.save()
+        return res.status(200).json({message:"order updated"})
+    } catch (error) {
+        res.status(500).json({message:"server side error"})
+        console.log(error);
     }
 }
