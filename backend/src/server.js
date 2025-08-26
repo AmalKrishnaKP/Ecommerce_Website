@@ -19,7 +19,8 @@ app.use(cookieParser())
 app.use("/api",main)
 if (process.env.NODE_ENV=="production"){
   app.use(express.static(path.join(__dirname,"../frontend","dist")))
-  app.get("*", (req, res) => {
+  // Express 5: wildcard "*" is invalid. Use a regex-like pattern instead.
+  app.get("/*", (req, res) => {
     res.sendFile(path.join(__dirname,"../frontend","dist","index.html"))
   })
 }
