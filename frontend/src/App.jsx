@@ -34,7 +34,7 @@ const App = () => {
       <Toaster />
       <div className='flex flex-col justify-start bg-[#f7f7fa] bg-center min-h-screen opacity-97 pt-[64px]'>
         <Nav />
-        <main className="w-full mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
+        <main className="w-full mx-auto max-w-[100%] ">
         <Routes>
           <Route path='/' element={authUser?<AboutUsPage />: <Navigate to="/login"/>}/>
           <Route path='/login' element={authUser?<Navigate to="/"/>:<LoginPage />} />

@@ -102,7 +102,7 @@ const Nav = () => {
             </NavLink>
           )}
 
-          {authUser && authUser.role === 'user' && (
+          {authUser  && (
             <NavLink to="/profile" className={navClass} aria-label="Profile">
               <UserRoundCog size={20} className="max-sm:w-[20px]" />
               <span className="max-md:hidden">Profile</span>
@@ -116,12 +116,12 @@ const Nav = () => {
             </NavLink>
           )}
 
-          {authUser && (
+          {/* {authUser && (
             <NavLink to="/settings" className={navClass} aria-label="Settings">
               <Settings size={18} />
               <span className="max-sm:text-[15px]">Settings</span>
             </NavLink>
-          )}
+          )} */}
 
           {authUser && (
                   <button
@@ -195,12 +195,12 @@ const Nav = () => {
               </NavLink>
             )}
 
-            {authUser && (
+            {/* {authUser && (
               <NavLink onClick={() => setIsMobileOpen(false)} to="/settings" className={navClass} aria-label="Settings">
                 <Settings size={18} />
                 <span>Settings</span>
               </NavLink>
-            )}
+            )} */}
 
             {authUser && (
               <button

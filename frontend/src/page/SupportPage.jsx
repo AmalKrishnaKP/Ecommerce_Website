@@ -21,7 +21,7 @@ const SupportPage = () => {
   }
 
   return (
-    <div className='w-full flex justify-center pt-20'>
+    <div className='w-full flex justify-center '>
       <div className='w-full max-w-[700px] p-4'>
         <h2 className='text-xl font-bold mb-4'>Support</h2>
         <div className='bg-white p-4 rounded-xl border shadow-xl flex flex-col gap-4'>

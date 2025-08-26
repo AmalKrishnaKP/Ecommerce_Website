@@ -9,7 +9,7 @@ const AboutUsPage = () => {
   const ctaText = isSeller ? 'Sell Now' : 'Shop Now'
 
   return (
-    <div className='w-full flex justify-center pt-18 relative'>
+    <div className='w-full flex justify-center  relative'>
       <div className="grid grid-cols-2 w-full">
         
         {/* Left Image */}
@@ -88,7 +88,7 @@ const AboutUsPage = () => {
         </div>
 
         {/* CTA Section at Bottom */}
-        <div className="col-span-2 flex flex-col items-center text-center mt-6 space-y-4">
+        <div className="col-span-2 flex flex-col items-center text-center py-5 mt-6 space-y-4">
           <p className="text-lg text-gray-700 max-w-2xl">
             Ready to experience the best of modern technology? 
             {isSeller 
@@ -97,7 +97,7 @@ const AboutUsPage = () => {
             }
           </p>
           <Link to={ctaHref}>
-            <button className='bg-black text-white px-8 py-3 rounded-xl text-lg font-semibold shadow-md hover:scale-105 transition-transform'>
+            <button className='bg-black text-white px-8  py-3 rounded-xl text-lg font-semibold shadow-md hover:scale-105 transition-transform'>
               {ctaText}
             </button>
           </Link>
