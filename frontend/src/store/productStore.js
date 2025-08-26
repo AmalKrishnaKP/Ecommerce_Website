@@ -94,6 +94,25 @@ export const productStore=create((set,get)=>({
             console.log(error);
         }
     },
+    getSellerOrders:async()=>{
+        try {
+            const res = await axiosInstance.get("seller/showOrders")
+            return res.data
+        } catch (error) {
+            toast.error(error.response?.data?.message || "Failed to fetch orders")
+            return []
+        }
+    },
+    markOrderSuccess:async(orderId,deliveryPhone)=>{
+        try {
+            const res = await axiosInstance.post("seller/order/success",{orderId,deliveryPhone})
+            toast.success(res.data.message)
+            return true
+        } catch (error) {
+            toast.error(error.response?.data?.message || "Update failed")
+            return false
+        }
+    },
     additem:async(formdata)=>{
         set({loading:true})
         try {

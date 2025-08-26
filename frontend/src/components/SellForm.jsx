@@ -10,6 +10,7 @@ const SellForm = () => {
         pic:"",
         discription:"",
         price:null,
+        elec_type:"",
     })
     const handleimge=(e)=>{
         const file=e.target.files[0]
@@ -50,6 +51,26 @@ const SellForm = () => {
                                     required={true}
                                     onChange={(e)=>{setFormdata({... formdata,name:e.target.value })}}
                                 />
+                            </div>
+                        </div>
+                    </div>
+                    <div className="form-control pb-4">
+                        <label htmlFor="category" className=' mb-2'>
+                            <span className='font-medium text-md pl-2'>Category:</span>
+                        </label>
+                        <div className="relative flex items-center  ">
+                            <div className="  border-black border-2 rounded-xl w-full max-w-[300px]">
+                                <select name="category" id="category" className='pl-2 py-2 outline-none w-full'
+                                    required={true}
+                                    value={formdata.elec_type}
+                                    onChange={(e)=>{setFormdata({... formdata,elec_type:e.target.value })}}
+                                >
+                                    <option value="" disabled>Choose category</option>
+                                    <option value="laptop">Laptop</option>
+                                    <option value="mobile">Mobile</option>
+                                    <option value="accessory">Accessory</option>
+                                    <option value="other">Other</option>
+                                </select>
                             </div>
                         </div>
                     </div>

@@ -98,6 +98,52 @@ export const authStore=create((set,get)=>({
             toast.error(error.response.data.message);
             
         }
+    },
+    updateAddress:async(role,address)=>{
+        try{
+            if(role==="user"){
+                const res = await axiosInstance.put("user/update",{address})
+                const updated = res.data.update
+                set({authUser:{...get().authUser,address:updated.address}})
+            }else if(role==="seller"){
+                const res = await axiosInstance.put("seller/update",{address})
+                const updated = res.data.update
+                set({authUser:{...get().authUser,address:updated.address}})
+            }
+            toast.success("Profile updated")
+        }catch(error){
+            toast.error(error.response?.data?.message || "Update failed")
+        }
+    },
+    updateAvatar:async(role,pic)=>{
+        try{
+            if(role==="user"){
+                const res = await axiosInstance.put("user/avatar",{pic})
+                set({authUser:{...get().authUser,avatarUrl:res.data.avatarUrl}})
+            }else if(role==="seller"){
+                const res = await axiosInstance.put("seller/avatar",{pic})
+                set({authUser:{...get().authUser,avatarUrl:res.data.avatarUrl}})
+            }
+            toast.success("Avatar updated")
+        }catch(error){
+            toast.error(error.response?.data?.message || "Avatar update failed")
+        }
+    },
+    updateName:async(role,fullName)=>{
+        try{
+            if(role==="user"){
+                const res = await axiosInstance.put("user/update",{fullName})
+                const updated = res.data.update
+                set({authUser:{...get().authUser,fullName:updated.fullName}})
+            }else if(role==="seller"){
+                const res = await axiosInstance.put("seller/update",{fullName})
+                const updated = res.data.update
+                set({authUser:{...get().authUser,fullName:updated.fullName}})
+            }
+            toast.success("Name updated")
+        }catch(error){
+            toast.error(error.response?.data?.message || "Name update failed")
+        }
     }
 
 }))
