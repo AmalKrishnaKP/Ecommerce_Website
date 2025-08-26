@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken'
 import { Admin } from '../model/admin.model.js'; 
-import { decode } from 'punycode';
+// import { decode } from 'punycode';
 export const adminAuthMidWare=async(req,res,next)=>{
     try {
         // console.log(req.cookies);

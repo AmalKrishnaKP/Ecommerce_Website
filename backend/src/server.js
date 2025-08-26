@@ -20,7 +20,7 @@ app.use("/api",main)
 if (process.env.NODE_ENV=="production"){
   app.use(express.static(path.join(__dirname,"../frontend","dist")))
   // Express 5: wildcard "*" is invalid. Use a regex-like pattern instead.
-  app.get("/*", (req, res) => {
+  app.get("/{*any}", (req, res) => {
     res.sendFile(path.join(__dirname,"../frontend","dist","index.html"))
   })
 }

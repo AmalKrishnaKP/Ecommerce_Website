@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken'
 import { Seller } from '../model/seller.model.js';
-import { decode } from 'punycode';
+// import { decode } from 'punycode';
 export const sellerAuthMidWare=async(req,res,next)=>{
     try {
         // console.log(req.cookies);
