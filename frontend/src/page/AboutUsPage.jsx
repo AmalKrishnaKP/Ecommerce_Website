@@ -9,21 +9,22 @@ const AboutUsPage = () => {
   const ctaText = isSeller ? 'Sell Now' : 'Shop Now'
 
   return (
-    <div className='w-full flex justify-center  relative'>
-      <div className="grid grid-cols-2 w-full">
+    <div className='w-full flex justify-center relative'>
+      <div className="grid grid-cols-1 lg:grid-cols-2 w-full gap-3 sm:gap-4 py-2 sm:py-4">
         
         {/* Left Image */}
-        <div className="bg-green-400">
+        <div className="bg-green-400 rounded-xl overflow-hidden order-1 lg:order-none">
           <img 
             src="https://res.cloudinary.com/dezj3e0et/image/upload/v1756213142/89648f8c-98d1-4071-aed5-343964e3fe4e_omiqiz.png" 
             alt="electronics showcase"
+            className='w-full h-full object-cover'
           />
         </div>
 
         {/* First Two Descriptions */}
-        <div className="grid gap-6 bg-white shadow-lg rounded-2xl p-6">
+        <div className="grid gap-4 sm:gap-6 bg-white shadow-lg rounded-2xl p-4 sm:p-6 order-2 lg:order-none">
           <div className="p-4 border-l-4 border-black bg-gray-50 rounded">
-            <h2 className="text-xl font-semibold mb-2 text-gray-900">
+            <h2 className="text-lg sm:text-xl font-semibold mb-2 text-gray-900">
               Professional & Trustworthy
             </h2>
             <p className="text-gray-700 leading-relaxed">
@@ -37,7 +38,7 @@ const AboutUsPage = () => {
           </div>
 
           <div className="p-4 border-l-4 border-black bg-gray-50 rounded">
-            <h2 className="text-xl font-semibold mb-2 text-gray-900">
+            <h2 className="text-lg sm:text-xl font-semibold mb-2 text-gray-900">
               Friendly & Customer-Focused
             </h2>
             <p className="text-gray-700 leading-relaxed">
@@ -52,9 +53,9 @@ const AboutUsPage = () => {
         </div>
 
         {/* Other Two Descriptions */}
-        <div className="grid gap-6 bg-gray-50 shadow-inner rounded-2xl p-6">
+        <div className="grid gap-4 sm:gap-6 bg-gray-50 shadow-inner rounded-2xl p-4 sm:p-6 order-4 lg:order-none">
           <div className="p-4 border-l-4 border-black bg-white rounded">
-            <h2 className="text-xl font-semibold mb-2 text-gray-900">
+            <h2 className="text-lg sm:text-xl font-semibold mb-2 text-gray-900">
               Tech-Savvy & Modern
             </h2>
             <p className="text-gray-700 leading-relaxed">
@@ -68,7 +69,7 @@ const AboutUsPage = () => {
           </div>
 
           <div className="p-4 border-l-4 border-black bg-white rounded">
-            <h2 className="text-xl font-semibold mb-2 text-gray-900">
+            <h2 className="text-lg sm:text-xl font-semibold mb-2 text-gray-900">
               Short & Catchy
             </h2>
             <p className="text-gray-700 leading-relaxed">
@@ -80,16 +81,17 @@ const AboutUsPage = () => {
         </div>
 
         {/* Right Image */}
-        <div className="bg-red-400">
+        <div className="bg-red-400 rounded-xl overflow-hidden order-3 lg:order-none">
           <img 
             src="https://res.cloudinary.com/dezj3e0et/image/upload/v1756213608/4a96571b-5fb0-4753-b2cf-76b941028288_x1hdu1.png" 
             alt="tech accessories"
+            className='w-full h-full object-cover'
           />
         </div>
 
         {/* CTA Section at Bottom */}
-        <div className="col-span-2 flex flex-col items-center text-center py-5 mt-6 space-y-4">
-          <p className="text-lg text-gray-700 max-w-2xl">
+        <div className="lg:col-span-2 flex flex-col items-center text-center py-4 sm:py-5 mt-2 sm:mt-4 space-y-4 px-2">
+          <p className="text-base sm:text-lg text-gray-700 max-w-2xl">
             Ready to experience the best of modern technology? 
             {isSeller 
               ? " Start selling your products to thousands of buyers on PixelCrate today." 

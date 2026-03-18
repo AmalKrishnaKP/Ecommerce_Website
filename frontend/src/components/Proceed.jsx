@@ -29,9 +29,9 @@ const Proceed = (props) => {
         </div>
     ))
   return (
-    <div className='fixed inset-0 bg-yellow-50/50 z-10 overflow-auto'>
+    <div className='fixed inset-0 bg-yellow-50/50 z-10 overflow-auto p-3 sm:p-6'>
         
-        <div className="fixed  top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2  bg-[#ffffff]  max-w-[500px] min-w-[400px] rounded-xl border-1.5 shadow-2xl">
+        <div className="mx-auto mt-8 sm:mt-14 bg-[#ffffff] w-full max-w-[560px] rounded-xl border-1.5 shadow-2xl">
         <div className="flex flex-col w-full p-2">
             <div className='w-full flex flex-row justify-end p-2 pt-1'>
                 <button
@@ -39,7 +39,7 @@ const Proceed = (props) => {
                     X
                 </button>
             </div>
-            <div className="grid grid-cols-2 w-full gap-2">
+            <div className="grid grid-cols-1 sm:grid-cols-2 w-full gap-2">
                 <div className="w-full flex flex-col justify-center items-center border-1 rounded-2xl">
                     <h1 className='font-medium'>avail</h1>
                     
@@ -60,7 +60,7 @@ const Proceed = (props) => {
                 <h1 className="font-medium">Grant Total:</h1>      
                 <h1 className="font-medium text-red-600">₹{total}/-</h1>      
             </div>
-            <div className='rounded-xl shadow-md border-0 m-2 p-2 mb-0 flex flex-row justify-between items-center'>
+            <div className='rounded-xl shadow-md border-0 m-2 p-2 mb-0 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2'>
                 <h1>Proceed with Avail</h1>
                 <div><button className='p-2 bg-black text-white border-1 rounded-xl'
                     onClick={()=>{ordering()}}

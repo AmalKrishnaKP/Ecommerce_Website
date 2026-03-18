@@ -26,27 +26,29 @@ const SellerShippingPage = () => {
     }
 
     return (
-        <div className='w-full flex justify-center pt-20'>
-            <div className='w-full max-w-[800px] p-4'>
+        <div className='w-full flex justify-center pt-4 sm:pt-8'>
+            <div className='w-full max-w-[900px] p-2 sm:p-4'>
                 <h2 className='text-xl font-bold mb-4'>Shipping</h2>
                 <div className='flex flex-col gap-3'>
                     {orders.map(o=> (
                         <div key={o._id} className='border rounded-xl p-3 bg-white'>
-                            <div className='flex justify-between'>
+                            <div className='flex flex-col lg:flex-row lg:justify-between gap-3'>
                                 <div className='flex gap-3 items-start'>
                                     {o.itemId?.picUrl && (
                                         <img src={o.itemId.picUrl} alt={o.itemId?.name} className='w-16 h-16 object-cover rounded' />
                                     )}
-                                    <div className='font-semibold'>Order #{o._id.slice(-6)}</div>
-                                    <div>Product: {o.itemId?.name || o.itemId}</div>
-                                    <div>Status: {o.currentStatus}</div>
-                                    {o.deliveryPhone && (
-                                        <div>Delivery: {o.deliveryPhone}</div>
-                                    )}
+                                    <div className='flex flex-col gap-1'>
+                                        <div className='font-semibold'>Order #{o._id.slice(-6)}</div>
+                                        <div>Product: {o.itemId?.name || o.itemId}</div>
+                                        <div>Status: {o.currentStatus}</div>
+                                        {o.deliveryPhone && (
+                                            <div>Delivery: {o.deliveryPhone}</div>
+                                        )}
+                                    </div>
                                 </div>
                                 {o.currentStatus!=="success" && (
-                                    <div className='flex items-center gap-2'>
-                                        <input className='border rounded px-2 py-1' placeholder='Delivery phone'
+                                    <div className='flex flex-col sm:flex-row sm:items-center gap-2'>
+                                        <input className='border rounded px-2 py-1 w-full sm:w-auto' placeholder='Delivery phone'
                                             value={phoneByOrder[o._id]||''}
                                             onChange={(e)=> setPhoneByOrder(prev=> ({...prev,[o._id]:e.target.value}))}
                                         />

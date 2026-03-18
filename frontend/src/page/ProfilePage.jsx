@@ -29,8 +29,8 @@ const ProfilePage = () => {
   }
 
   return (
-    <div className='w-full flex flex-col items-center justify-center pt-20'>
-      <div className='w-full max-w-[600px] p-4'>
+    <div className='w-full flex flex-col items-center justify-center pt-4 sm:pt-8'>
+      <div className='w-full max-w-[760px] p-2 sm:p-4'>
         <h2 className='text-xl font-bold mb-4'>Profile</h2>
         <div className='bg-white p-4 rounded-xl border shadow-xl flex  flex-col items-center justify-center gap-4'>
           <div className='flex flex-col gap-4'>
@@ -41,7 +41,7 @@ const ProfilePage = () => {
               </label>
             </div>
             <div className='flex flex-col justify-center items-center gap-2 '>
-              <div className='mb-1 flex items-center gap-2  w-full'>
+              <div className='mb-1 flex flex-col sm:flex-row sm:items-center gap-2 w-full'>
                 <span className='font-semibold'>Name:</span>
                 {!editingName ? (
                   <>
@@ -49,8 +49,8 @@ const ProfilePage = () => {
                     <button className='bg-black text-white px-3 py-1 rounded' onClick={()=>setEditingName(true)}>Edit</button>
                   </>
                 ):(
-                  <div className='flex'>
-                    <input className='border rounded px-2 py-1 shadow-sm' value={name} onChange={(e)=>setName(e.target.value)} />
+                  <div className='flex flex-col sm:flex-row gap-2'>
+                    <input className='border rounded px-2 py-1 shadow-sm w-full sm:w-auto' value={name} onChange={(e)=>setName(e.target.value)} />
                     <button className='bg-black text-white px-3 py-1 rounded' onClick={()=>{updateName(authUser.role,name); setEditingName(false)}}>Save</button>
                     <button className='px-3 py-1 rounded border' onClick={()=>{setName(authUser.fullName||""); setEditingName(false)}}>Cancel</button>
                   </div>
@@ -61,7 +61,7 @@ const ProfilePage = () => {
             </div>
           </div>
           <div>
-            <div className='flex items-center gap-2'>
+            <div className='flex flex-col sm:flex-row sm:items-center gap-2'>
               <span className='font-semibold'>Address:</span>
               {!editingAddress ? (
                 <>
@@ -69,7 +69,7 @@ const ProfilePage = () => {
                   <button className='bg-black text-white px-3 py-1 rounded' onClick={()=>setEditingAddress(true)}>Edit</button>
                 </>
               ) : (
-                <div className='flex gap-2 w-full'>
+                <div className='flex flex-col sm:flex-row gap-2 w-full'>
                   <input className='border rounded px-2 py-1 flex-1 shadow-sm' value={address} onChange={(e)=>setAddress(e.target.value)} />
                   <button className='bg-black text-white px-3 py-1 rounded' onClick={handleAddressSave}>Save</button>
                   <button className='px-3 py-1 rounded border' onClick={()=>{setAddress(authUser.address||""); setEditingAddress(false)}}>Cancel</button>

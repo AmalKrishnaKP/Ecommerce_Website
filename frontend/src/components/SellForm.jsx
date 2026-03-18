@@ -31,7 +31,7 @@ const SellForm = () => {
             
     }
   return (
-    <div className='border-1 p-4 rounded-2xl shadow-xl  '>
+    <div className='border-1 p-4 sm:p-5 rounded-2xl shadow-xl w-full max-w-[560px] bg-white'>
         <div className='flex flex-row justify-center items-center  font-bold font-[Poppins]'>
             SELL YOUR PRODUCT
         </div>
@@ -46,8 +46,8 @@ const SellForm = () => {
                             <div className="absolute left-0 pl-1">
                             <Inbox />
                             </div>
-                            <div className="  border-black border-2 rounded-xl">
-                                <input type="text" name="name" id="name" placeholder='ASUSE ROWGE' className='pl-7 py-2 outline-none min-w-[300px]'
+                            <div className="w-full border-black border-2 rounded-xl">
+                                <input type="text" name="name" id="name" placeholder='ASUSE ROWGE' className='pl-7 py-2 outline-none w-full'
                                     required={true}
                                     onChange={(e)=>{setFormdata({... formdata,name:e.target.value })}}
                                 />
@@ -59,7 +59,7 @@ const SellForm = () => {
                             <span className='font-medium text-md pl-2'>Category:</span>
                         </label>
                         <div className="relative flex items-center  ">
-                            <div className="  border-black border-2 rounded-xl w-full max-w-[300px]">
+                            <div className="border-black border-2 rounded-xl w-full">
                                 <select name="category" id="category" className='pl-2 py-2 outline-none w-full'
                                     required={true}
                                     value={formdata.elec_type}
@@ -82,8 +82,8 @@ const SellForm = () => {
                             <div className="absolute left-0 pl-1">
                             <Tally5 />
                             </div>
-                            <div className="  border-black border-2 rounded-xl">
-                                <input type="number" name="count" id="count" placeholder='20' className='pl-7 py-2 outline-none min-w-[300px]'
+                            <div className="w-full border-black border-2 rounded-xl">
+                                <input type="number" name="count" id="count" placeholder='20' className='pl-7 py-2 outline-none w-full'
                                     required={true}
                                     onChange={(e)=>{setFormdata({... formdata,count:e.target.value })}}
                                 />
@@ -98,8 +98,8 @@ const SellForm = () => {
                             <div className="absolute left-0 pl-1">
                             <Images />
                             </div>
-                            <div className="  border-black border-2 rounded-xl">
-                                <input type="file" name="image" id="image" placeholder='20' className='pl-7  py-2 outline-none min-w-[300px] max-w-[300px] ' accept="image/png, image/jpeg"
+                            <div className="w-full border-black border-2 rounded-xl">
+                                <input type="file" name="image" id="image" placeholder='20' className='pl-7 py-2 outline-none w-full' accept="image/png, image/jpeg"
                                     required={true}
                                     onChange={handleimge}
                                     />
@@ -114,8 +114,8 @@ const SellForm = () => {
                             <div className="absolute left-0 pl-1">
                             <NotebookPen />
                             </div>
-                            <div className="  border-black border-2 rounded-xl">
-                                <input type="text" name="discription" id="discription" placeholder='Intel processor whith snapdragon....' className='pl-7  py-2 outline-none min-w-[300px] max-w-[300px] '
+                            <div className="w-full border-black border-2 rounded-xl">
+                                <input type="text" name="discription" id="discription" placeholder='Intel processor whith snapdragon....' className='pl-7 py-2 outline-none w-full'
                                     required={true}
                                     onChange={(e)=>{setFormdata({... formdata,discription:e.target.value })}}
                                 />
@@ -130,8 +130,8 @@ const SellForm = () => {
                             <div className="absolute left-0 pl-1">
                             <IndianRupee />
                             </div>
-                            <div className="  border-black border-2 rounded-xl">
-                                <input type="text" name="price" id="price" placeholder='150000' className='pl-7  py-2 outline-none min-w-[300px] max-w-[300px] '
+                            <div className="w-full border-black border-2 rounded-xl">
+                                <input type="text" name="price" id="price" placeholder='150000' className='pl-7 py-2 outline-none w-full'
                                     required={true}
                                     onChange={(e)=>{setFormdata({... formdata,price:e.target.value })}}
                                 />

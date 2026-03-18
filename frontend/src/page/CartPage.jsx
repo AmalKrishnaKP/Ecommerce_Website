@@ -23,12 +23,12 @@ const CartPage = () => {
       )
   ))
   return (
-    <div className='flex flex-col  h-full p-4 pt-25'>
+    <div className='flex flex-col h-full p-2 sm:p-4 pt-4 sm:pt-8'>
       {
         cart.length!=0 ?(
-          <div className="w-full bg-[#ffffff]  shadow-2xl rounded-2xl p-3   ">
-            <div className='w-full flex justify-between items-center'> 
-                <h1 className="text-[Poppins] font-medium text-md">if you are ready</h1>
+          <div className="w-full bg-[#ffffff] shadow-2xl rounded-2xl p-3">
+            <div className='w-full flex flex-col sm:flex-row gap-3 justify-between sm:items-center'> 
+                <h1 className="text-[Poppins] font-medium text-sm sm:text-md">if you are ready</h1>
                 <button className='border bg-black text-white p-2 rounded-xl'
                   onClick={()=>{setProceed(!proceed)}}
                 >
@@ -37,8 +37,8 @@ const CartPage = () => {
             </div>
           </div>
         ):(
-          <div className="w-full bg-[#ffffff]  shadow-2xl rounded-2xl p-3   ">
-            <div className='w-full flex justify-between items-center'> 
+          <div className="w-full bg-[#ffffff] shadow-2xl rounded-2xl p-3">
+            <div className='w-full flex flex-col sm:flex-row gap-3 justify-between sm:items-center'> 
                 No cart Item Yet 
                 <Link to={"/shop"}>
                   <button  className='border bg-black text-white p-2 rounded-xl'>
@@ -49,7 +49,7 @@ const CartPage = () => {
           </div>
         )
       }
-      <div className="grid grid-cols-3 gap-3  p-10 max-md:grid-cols-2 max-sm:grid-cols-1 ">
+      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3 sm:gap-4 p-2 sm:p-6 lg:p-10">
         {carts}
       </div>
      { proceed &&(

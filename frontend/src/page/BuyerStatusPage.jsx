@@ -22,13 +22,13 @@ const BuyerStatusPage = () => {
     }
 
     return (
-        <div className='w-full flex justify-center pt-20'>
-            <div className='w-full max-w-[800px] p-4'>
+        <div className='w-full flex justify-center pt-4 sm:pt-8'>
+            <div className='w-full max-w-[900px] p-2 sm:p-4'>
                 <h2 className='text-xl font-bold mb-4'>My Orders</h2>
                 <div className='flex flex-col gap-3'>
                     {orders.map(o=> (
                         <div key={o._id} className='border rounded-xl p-3 bg-white'>
-                            <div className='flex justify-between'>
+                            <div className='flex flex-col sm:flex-row sm:justify-between gap-3'>
                                 <div className='flex gap-3 items-start'>
                                     {o.itemId?.picUrl && (
                                         <img src={o.itemId.picUrl} alt={o.itemId?.name} className='w-16 h-16 object-cover rounded' />
@@ -38,7 +38,7 @@ const BuyerStatusPage = () => {
                                         <div className='font-medium'>Product: {o.itemId?.name || o.itemId}</div>
                                     </div>
                                 </div>
-                                <div className='text-right'>
+                                <div className='text-left sm:text-right'>
                                     {o.currentStatus!=="success" ? (
                                         <div className='text-yellow-600 font-semibold'>Pending</div>
                                     ) : (

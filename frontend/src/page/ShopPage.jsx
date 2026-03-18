@@ -18,13 +18,13 @@ const ShopPage = () => {
   ))
 
   return (
-    <div className='flex flex-col pt-20 max-w-full'>
-      <div className='w-full bg-[#f5f6f6] mt-3 p-5 border-y'>
-          <h1 className="text-4xl max-sm:text-2xl font-[Poppins] mb-2">All Products</h1>
+    <div className='flex flex-col pt-2 sm:pt-4 max-w-full'>
+      <div className='w-full bg-[#f5f6f6] mt-3 p-4 sm:p-5 border-y'>
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-[Poppins] mb-2">All Products</h1>
           <p className="text-sm text-gray-700">Explore electronics across categories and brands.</p>
       </div>
 
-      <div className="w-full flex items-center gap-2 px-4 py-3">
+      <div className="w-full flex items-center gap-2 px-2 sm:px-4 py-3">
           <span className='text-sm text-gray-600'>Filter:</span>
           <select name="filter" id="filter" className='border rounded px-2 py-1'
             onChange={(e)=>{setFilter(e.target.value);}}
@@ -35,7 +35,7 @@ const ShopPage = () => {
             <option value="accessories">Accessories</option>
           </select>
       </div>
-      <div className="relative max-w-full grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 px-3 pb-6">
+      <div className="relative max-w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4 px-2 sm:px-3 pb-6">
             {items}
       </div>
     </div>

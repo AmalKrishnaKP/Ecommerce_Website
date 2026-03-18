@@ -30,11 +30,11 @@ const App = () => {
   
 
   return (
-    <div className="relative bg-[url(https://res.cloudinary.com/dezj3e0et/image/upload/v1753387256/T2_rz8c0n.png)] bg-no-repeat bg-size-[60vh] bg-center ">
+    <div className="relative bg-[url(https://res.cloudinary.com/dezj3e0et/image/upload/v1753387256/T2_rz8c0n.png)] bg-no-repeat bg-[length:45vh] sm:bg-[length:55vh] bg-center">
       <Toaster />
-      <div className='flex flex-col justify-start bg-[#f7f7fa] bg-center min-h-screen opacity-97 pt-[64px]'>
+      <div className='flex flex-col justify-start bg-[#f7f7fa] bg-center min-h-screen opacity-97 pt-[72px] sm:pt-[76px]'>
         <Nav />
-        <main className="w-full mx-auto max-w-[100%] ">
+        <main className="w-full mx-auto max-w-[100%] px-2 sm:px-4 lg:px-6">
         <Routes>
           <Route path='/' element={authUser?<AboutUsPage />: <Navigate to="/login"/>}/>
           <Route path='/login' element={authUser?<Navigate to="/"/>:<LoginPage />} />

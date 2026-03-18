@@ -21,8 +21,8 @@ const SupportPage = () => {
   }
 
   return (
-    <div className='w-full flex justify-center '>
-      <div className='w-full max-w-[700px] p-4'>
+    <div className='w-full flex justify-center pt-2 sm:pt-4'>
+      <div className='w-full max-w-[760px] p-2 sm:p-4'>
         <h2 className='text-xl font-bold mb-4'>Support</h2>
         <div className='bg-white p-4 rounded-xl border shadow-xl flex flex-col gap-4'>
           <div>
@@ -41,7 +41,7 @@ const SupportPage = () => {
             <div className='font-semibold mb-1'>Describe the problem in detail</div>
             <textarea className='w-full border rounded px-2 py-2 min-h-[120px] shadow-sm' placeholder='Steps tried, expected vs actual behavior, device, screenshots link, etc.' value={description} onChange={(e)=>setDescription(e.target.value)} />
           </div>
-          <div className='grid grid-cols-2 gap-3'>
+          <div className='grid grid-cols-1 sm:grid-cols-2 gap-3'>
             <div>
               <div className='font-semibold mb-1'>Related Order ID (optional)</div>
               <input className='w-full border rounded px-2 py-1 shadow-sm' value={orderId} onChange={(e)=>setOrderId(e.target.value)} placeholder='Paste order id if relevant' />

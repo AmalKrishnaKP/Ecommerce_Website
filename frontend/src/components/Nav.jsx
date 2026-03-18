@@ -29,11 +29,11 @@ const Nav = () => {
     `${baseNavItem} ${isActive ? activeNavItem : 'text-neutral-700'}`
 
   return (
-    <div className="bg-white/90 backdrop-blur border-b shadow-sm w-[100vw] fixed top-0 z-20">
-      <div className="w-full flex flex-row items-center justify-between px-4 py-3">
-        <Link to="/" className="flex items-center gap-3 min-w-[30vw] max-sm:min-w-0">
+    <div className="bg-white/90 backdrop-blur border-b shadow-sm w-full fixed top-0 left-0 z-20">
+      <div className="w-full flex flex-row items-center justify-between px-3 sm:px-4 py-3 gap-2">
+        <Link to="/" className="flex items-center gap-2 sm:gap-3 min-w-0">
           <img src={logo} alt="Pixelcrate logo" className="w-9 h-9 rounded shadow-sm" />
-          <span className="font-[Poppins] font-semibold tracking-wide text-2xl max-sm:text-[18px]">
+          <span className="font-[Poppins] font-semibold tracking-wide text-xl sm:text-2xl truncate">
             Pixelcrate
           </span>
         </Link>
@@ -48,8 +48,8 @@ const Nav = () => {
           {isMobileOpen ? <X size={22} /> : <Menu size={22} />}
         </button>
 
-        <div className="flex max-[1112px]:hidden flex-1 items-center justify-center">
-          <nav className="flex items-center gap-1 max-w-[60vw] overflow-x-auto">
+        <div className="flex max-[1112px]:hidden flex-1 items-center justify-center min-w-0">
+          <nav className="flex items-center gap-1 max-w-[60vw] overflow-x-auto pb-1">
             {authUser && authUser.role === 'user' && (
               <NavLink to="/shop" className={navClass} aria-label="Shop">
                 <Store size={18} />
@@ -85,7 +85,7 @@ const Nav = () => {
           </nav>
                 </div>
 
-        <div className="flex max-[1112px]:hidden items-center gap-1 min-w-[30vw] justify-end px-1">
+        <div className="flex max-[1112px]:hidden items-center gap-1 min-w-0 md:min-w-[30vw] justify-end px-1">
           {/* <div className="hidden md:flex items-center gap-2 bg-black/5 rounded-md px-3 py-2 mr-1">
             <Search size={18} className="text-neutral-600" />
             <input

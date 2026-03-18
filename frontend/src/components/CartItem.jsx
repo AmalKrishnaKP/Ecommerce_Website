@@ -26,18 +26,18 @@ const CartItem = (props) => {
 
   return (
     <div className={`${remove?'hidden':''}`}>
-      <div className="w-full  bg-[#ffffff] border-1 shadow-xl p-5 rounded-2xl max-sm:max-h-[200px]">
-        <div className='flex flex-row justify-between '>
-            <div className='h-full '>
-              <img src={props.item.picUrl} alt="" className='h-full max-sm:max-h-[150px] max-h-[510px]'/>
+      <div className="w-full bg-[#ffffff] border-1 shadow-xl p-4 sm:p-5 rounded-2xl">
+        <div className='flex flex-col sm:flex-row justify-between gap-4'>
+            <div className='h-full flex justify-center'>
+              <img src={props.item.picUrl} alt="" className='h-full max-h-[180px] sm:max-h-[150px] md:max-h-[220px] object-contain'/>
             </div>
-            <div className="flex flex-col justify-between">
+            <div className="flex flex-col justify-between gap-3 sm:gap-2">
               <div>
 
               <h1 className='font-medium text-sm'>{props.item.name}</h1>
               <h2 className='font-medium'>₹ {props.item.price}</h2>
               </div>
-              <div className="flex felx-row">
+              <div className="flex flex-row items-center">
                 <button 
                   className='border px-1.5 rounded-sm shadow-md  '
                   onClick={()=>{setcount((count)=>count+1)}}
